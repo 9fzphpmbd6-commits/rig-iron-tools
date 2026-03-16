@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#0F2439"/>
+  <text x="200" y="180" text-anchor="middle" fill="#C4550A" font-family="sans-serif" font-weight="700" font-size="24">MAG DRILL</text>
+  <text x="200" y="220" text-anchor="middle" fill="#8899AA" font-family="sans-serif" font-size="14">Product Image</text>
+  <circle cx="200" cy="270" r="15" fill="none" stroke="#C4550A" stroke-width="2" opacity="0.3"/>
+  <circle cx="200" cy="270" r="5" fill="#C4550A" opacity="0.3"/>
+</svg>
