@@ -70,7 +70,7 @@ export function Footer() {
 
         <div className="mt-10 pt-6 border-t border-secondary-foreground/10 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-xs text-secondary-foreground/50 text-center sm:text-left">
-            Rig Iron Tools — an independent retailer. Unibor and SITEH3RO trademarks belong to their respective owners.
+            Texas Hole Makers — an independent retailer. Unibor and SITEH3RO trademarks belong to their respective owners.
           </p>
           <a
             href="https://www.perplexity.ai/computer"

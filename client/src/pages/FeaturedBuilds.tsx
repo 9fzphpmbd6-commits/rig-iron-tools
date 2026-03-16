@@ -36,7 +36,7 @@ export default function FeaturedBuilds() {
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
         <div>
           <h1 className="font-display text-xl font-bold">Featured Builds</h1>
-          <p className="text-sm text-muted-foreground mt-1">Real projects from Texas crews using Rig Iron tools.</p>
+          <p className="text-sm text-muted-foreground mt-1">Real projects from Texas crews using Texas Hole Makers tools.</p>
         </div>
         <Button onClick={() => setShowSubmitModal(true)} className="gap-1.5" data-testid="button-submit-build">
           <Camera className="w-4 h-4" />

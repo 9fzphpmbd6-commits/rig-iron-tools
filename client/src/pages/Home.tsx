@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, Zap, Magnet, Store, Truck, Play } from "lucide-react";
+import { ArrowRight, Zap, Magnet, Store, Truck, Play, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MembershipBanner } from "@/components/MembershipBanner";
 import { EmailCapture } from "@/components/EmailCapture";
@@ -7,6 +7,7 @@ import { BuildCard } from "@/components/BuildCard";
 import { getFeaturedProducts } from "@/data/products";
 import { featuredBuilds } from "@/data/featuredBuilds";
 import { ProductCard } from "@/components/ProductCard";
+import { Logo } from "@/components/Logo";
 
 const featured = getFeaturedProducts().slice(0, 4);
 const previewBuilds = featuredBuilds.slice(0, 3);
@@ -16,32 +17,65 @@ export default function Home() {
     <div>
       {/* Hero */}
       <section className="relative overflow-hidden bg-secondary text-secondary-foreground">
-        <div className="absolute inset-0 opacity-5">
+        {/* Background pattern — diagonal steel lines */}
+        <div className="absolute inset-0 opacity-[0.04]">
           <div className="absolute inset-0" style={{
             backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 40px, currentColor 40px, currentColor 41px)`,
           }} />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 lg:py-28">
-          <div className="max-w-2xl space-y-6">
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-secondary-foreground">
-              Texas-tough drill and SITEH3RO tools for real steel work.
-            </h1>
-            <p className="text-base sm:text-lg text-secondary-foreground/70 leading-relaxed max-w-xl">
-              Built for steel erectors, fabricators, bridge and plant maintenance crews in Texas. A focused store — not a giant catalog.
-            </p>
-            <div className="flex flex-wrap gap-3">
+        
+        {/* Decorative oversized star watermark */}
+        <div className="absolute -right-20 -top-20 opacity-[0.04] pointer-events-none">
+          <svg width="500" height="500" viewBox="0 0 64 64" fill="currentColor">
+            <path d="M32 2 L39 22 L60 22 L43 35 L49 56 L32 43 L15 56 L21 35 L4 22 L25 22 Z" />
+          </svg>
+        </div>
+        <div className="absolute -left-16 -bottom-16 opacity-[0.03] pointer-events-none">
+          <svg width="300" height="300" viewBox="0 0 64 64" fill="currentColor">
+            <path d="M32 2 L39 22 L60 22 L43 35 L49 56 L32 43 L15 56 L21 35 L4 22 L25 22 Z" />
+          </svg>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20 lg:py-28">
+          <div className="flex flex-col items-center text-center max-w-3xl mx-auto space-y-8">
+            {/* Hero logo — big and bold */}
+            <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+              <Logo size="hero" className="justify-center [&_svg]:w-20 [&_svg]:h-20 sm:[&_svg]:w-24 sm:[&_svg]:h-24 [&_span]:text-secondary-foreground [&_.text-foreground]:text-secondary-foreground [&_.stroke-secondary]:stroke-secondary [&_.fill-primary]:fill-primary" />
+            </div>
+            
+            {/* Tagline */}
+            <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
+              <p className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-secondary-foreground/90 leading-snug">
+                Texas-tough drill and SITEH3RO tools<br className="hidden sm:block" /> for real steel work.
+              </p>
+              <p className="text-base sm:text-lg text-secondary-foreground/60 leading-relaxed max-w-xl mx-auto">
+                Built for steel erectors, fabricators, bridge and plant maintenance crews across Texas. A focused store — not a giant catalog.
+              </p>
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap justify-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
               <Link href="/siteh3ro">
-                <Button size="lg" className="gap-2 font-semibold" data-testid="button-shop-siteh3ro">
-                  <Zap className="w-4 h-4" />
+                <Button size="lg" className="gap-2 font-semibold text-base px-6" data-testid="button-shop-siteh3ro">
+                  <Zap className="w-5 h-5" />
                   Shop SITEH3RO Tools
                 </Button>
               </Link>
               <Link href="/magnetic-drills">
-                <Button size="lg" variant="outline" className="gap-2 font-semibold border-secondary-foreground/20 text-secondary-foreground hover:bg-secondary-foreground/10" data-testid="button-shop-magdrills">
-                  <Magnet className="w-4 h-4" />
+                <Button size="lg" variant="outline" className="gap-2 font-semibold text-base px-6 border-secondary-foreground/20 text-secondary-foreground hover:bg-secondary-foreground/10" data-testid="button-shop-magdrills">
+                  <Magnet className="w-5 h-5" />
                   Shop Magnetic Drills
                 </Button>
               </Link>
+            </div>
+
+            {/* Trust line */}
+            <div className="flex items-center gap-4 text-xs text-secondary-foreground/40 animate-in fade-in duration-700 delay-500">
+              <span className="flex items-center gap-1"><Star className="w-3 h-3 fill-primary text-primary" /> Texas-Based</span>
+              <span className="w-1 h-1 rounded-full bg-secondary-foreground/20" />
+              <span>Fast Shipping</span>
+              <span className="w-1 h-1 rounded-full bg-secondary-foreground/20" />
+              <span>Unibor Authorized</span>
             </div>
           </div>
         </div>

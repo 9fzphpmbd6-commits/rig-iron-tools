@@ -10,7 +10,7 @@ export default function Warranty() {
 
       <div className="space-y-6">
         {[
-          { icon: ShieldCheck, title: "Manufacturer Warranty", text: "All Unibor products sold through Rig Iron Tools carry the manufacturer's standard warranty. SITEH3RO tools and magnetic drills are covered against defects in materials and workmanship under normal use conditions." },
+          { icon: ShieldCheck, title: "Manufacturer Warranty", text: "All Unibor products sold through Texas Hole Makers carry the manufacturer's standard warranty. SITEH3RO tools and magnetic drills are covered against defects in materials and workmanship under normal use conditions." },
           { icon: AlertCircle, title: "What's Not Covered", text: "Normal wear and tear, damage from misuse or modification, and consumable items (such as annular cutters or drill bits) are not covered under warranty. Always follow the manufacturer's operating guidelines." },
           { icon: Phone, title: "Warranty Claims", text: "To make a warranty claim, contact us with your order number and a description of the issue. We'll work with Unibor to resolve the claim as quickly as possible. Most claims are processed within 5–10 business days." },
         ].map((item) => (

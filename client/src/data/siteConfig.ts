@@ -1,17 +1,17 @@
 export const SITE = {
-  name: "Rig Iron Tools",
-  tagline: "Texas-tough tools for real steel work.",
+  name: "Texas Hole Makers",
+  tagline: "Drilling holes across Texas — one steel beam at a time.",
   description: "Your focused source for Unibor SITEH3RO impact-ready tools and magnetic drills. Built for steel erectors, fabricators, and maintenance crews across Texas and beyond.",
   memberProgram: "The Yard Crew",
-  brandHashtag: "#RigIronBuilds",
+  brandHashtag: "#TexasHoleMakers",
   social: {
-    tiktok: "https://tiktok.com/@rigirontools",
-    instagram: "https://instagram.com/rigirontools",
-    youtube: "https://youtube.com/@rigirontools",
-    x: "https://x.com/rigirontools",
+    tiktok: "https://tiktok.com/@texasholemakers",
+    instagram: "https://instagram.com/texasholemakers",
+    youtube: "https://youtube.com/@texasholemakers",
+    x: "https://x.com/texasholemakers",
   },
   contact: {
-    email: "info@rigirontools.com",
+    email: "info@texasholemakers.com",
     phone: "(469) 555-0187",
   },
   shipping: {

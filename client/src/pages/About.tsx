@@ -8,7 +8,7 @@ export default function About() {
 
       <div className="space-y-8 py-6">
         <div className="space-y-3">
-          <h1 className="font-display text-2xl font-bold">About Rig Iron Tools</h1>
+          <h1 className="font-display text-2xl font-bold">About Texas Hole Makers</h1>
           <p className="text-sm text-muted-foreground leading-relaxed">
             We're a niche power-tool store focused on two things: Unibor SITEH3RO impact-ready tools and Unibor magnetic drills. That's it. No ten-thousand-item catalog, no generic product pages. Just the tools Texas steel crews actually use, presented clearly with real specs and honest descriptions.
           </p>
@@ -29,7 +29,7 @@ export default function About() {
             {
               icon: Store,
               title: "Independent Retailer",
-              text: "Rig Iron Tools is an independent retailer. Unibor and SITEH3RO are trademarks of their respective owners. We're authorized to sell their products and stand behind everything in our catalog.",
+              text: "Texas Hole Makers is an independent retailer. Unibor and SITEH3RO are trademarks of their respective owners. We're authorized to sell their products and stand behind everything in our catalog.",
             },
             {
               icon: Wrench,

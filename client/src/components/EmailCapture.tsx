@@ -21,7 +21,7 @@ export function EmailCapture() {
         <Mail className="w-8 h-8 mx-auto text-primary" />
         <h2 className="font-display text-xl font-bold">Get Member-Only Discounts</h2>
         <p className="text-sm text-secondary-foreground/70">
-          Sign up for the Rig Iron Tools mailing list. Be first to know about new arrivals, crew specials, and Yard Crew perks.
+          Sign up for the Texas Hole Makers mailing list. Be first to know about new arrivals, crew specials, and Yard Crew perks.
         </p>
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
           <input
