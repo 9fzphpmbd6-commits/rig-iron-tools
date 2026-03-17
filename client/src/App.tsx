@@ -5,6 +5,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/Header";
+import { usePageTracking } from "@/hooks/usePageTracking";
 import { Footer } from "@/components/Footer";
 import { DrillbitDebbie } from "@/components/DrillbitDebbie";
 import Home from "@/pages/Home";
@@ -22,6 +23,7 @@ import Warranty from "@/pages/Warranty";
 import NotFound from "@/pages/not-found";
 
 function AppRouter() {
+  usePageTracking();
   return (
     <Switch>
       <Route path="/" component={Home} />
