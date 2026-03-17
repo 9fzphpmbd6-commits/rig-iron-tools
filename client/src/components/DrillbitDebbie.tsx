@@ -20,7 +20,7 @@ const FAQ_ANSWERS: Record<string, string> = {
   "Which mag drill for me?":
     "Great question! Here's a quick guide:\n\n• Light/occasional work → Commando 35 ($429.99) — lightweight, simple, gets it done\n• General structural work → Pro 50 ($899.99) — reliable daily driver\n• Heavy-duty / large holes → Elite 50 ($1,299.99) or Elite 75 ($1,899.99) — smart features, max power\n\nWhat kind of work are you doing? That'll help narrow it down! 🔩",
   "Talk to a human":
-    "You bet! Here's how to reach our team:\n\n📧 Email: info@texasholemakers.com\n📞 Phone: (469) 555-0187\n\nWe're here Monday–Friday, 8am–5pm CT. We'd love to hear from you!",
+    "You bet! Here's how to reach our team:\n\n📧 Email: texasholemakers@gmail.com\n📞 Phone: (469) 555-0187\n\nWe're here Monday–Friday, 8am–5pm CT. We'd love to hear from you!",
 };
 
 const QUICK_QUESTIONS = Object.keys(FAQ_ANSWERS);
@@ -101,7 +101,7 @@ export function DrillbitDebbie() {
       addDebbieResponse(FAQ_ANSWERS[matched]);
     } else {
       addDebbieResponse(
-        "Hmm, I'm not sure about that one, sugar. Try emailing us at info@texasholemakers.com or pick one of the options above! 🔩"
+        "Hmm, I'm not sure about that one, sugar. Try emailing us at texasholemakers@gmail.com or pick one of the options above! 🔩"
       );
     }
   }

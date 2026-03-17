@@ -12,7 +12,7 @@ export const SITE = {
     x: "https://x.com/texasholemakers",
   },
   contact: {
-    email: "info@texasholemakers.com",
+    email: "texasholemakers@gmail.com",
     phone: "(469) 555-0187",
   },
   shipping: {

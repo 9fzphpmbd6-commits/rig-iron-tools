@@ -78,11 +78,11 @@ export default function Home() {
 
             {/* Right side — mascot */}
             <div className="flex-shrink-0 order-1 lg:order-2 relative">
-              <div className="relative w-[280px] sm:w-[320px] lg:w-[400px]">
+              <div className="relative w-[280px] sm:w-[320px] lg:w-[400px] cursor-pointer">
                 <img 
                   src="/images/mascot.png" 
                   alt="Texas Hole Makers mascot" 
-                  className="w-full h-auto drop-shadow-2xl"
+                  className="w-full h-auto drop-shadow-2xl mascot-hover"
                 />
                 {/* Glow effect behind mascot */}
                 <div className="absolute inset-0 -z-10 blur-3xl opacity-20 bg-primary rounded-full scale-75" />

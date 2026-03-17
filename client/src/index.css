@@ -219,3 +219,27 @@
     inset: -1px;
   }
 }
+
+/* Drillbit Debbie mascot hover animations */
+@keyframes drill-shake {
+  0%, 100% { transform: rotate(0deg) translate(0, 0); }
+  10% { transform: rotate(-1.5deg) translate(-1px, 0); }
+  20% { transform: rotate(1.5deg) translate(1px, 0); }
+  30% { transform: rotate(-1deg) translate(-1px, 0); }
+  40% { transform: rotate(1deg) translate(1px, 0); }
+  50% { transform: rotate(-0.5deg) translate(0, 0); }
+  60% { transform: rotate(0.5deg) translate(0, 0); }
+  70% { transform: rotate(-0.3deg); }
+  80% { transform: rotate(0.3deg); }
+  90% { transform: rotate(0deg); }
+}
+
+.mascot-hover {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.mascot-hover:hover {
+  transform: scale(1.05) translateY(-4px);
+  filter: drop-shadow(0 12px 24px rgba(196, 85, 10, 0.35));
+  animation: drill-shake 0.6s ease-in-out;
+}

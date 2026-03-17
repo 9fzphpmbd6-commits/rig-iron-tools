@@ -41,7 +41,7 @@ export const products: Product[] = [
     longDescription: "The SITEH3RO Step Reamer 8–20mm is built for impact wrenches and drills alike. Its proprietary SITEH3RO coating delivers up to 75% longer tool life compared to standard HSS reamers. Each step is precision-ground to match common bolt sizes used in structural steel, bridge work, and plant maintenance. One tool replaces a drawer full of individual reamers.",
     keyFeatures: [
       "SITEH3RO coating — up to 75% longer life",
-      "Impact-wrench compatible (1/4\" hex shank)",
+      "Impact-wrench compatible (6.35mm hex shank)",
       "Covers 8mm to 20mm in single tool",
       "Precision-ground steps for common bolt sizes",
       "Ideal for on-site steel and plate work",
@@ -49,7 +49,7 @@ export const products: Product[] = [
     specs: {
       "Size Range": "8–20mm",
       "Steps": "9",
-      "Shank": '1/4" hex',
+      "Shank": "6.35mm hex",
       "Coating": "SITEH3RO",
       "Material": "M2 HSS",
       "Weight": "145g",
@@ -79,7 +79,7 @@ export const products: Product[] = [
     specs: {
       "Size Range": "4–12mm",
       "Steps": "7",
-      "Shank": '1/4" hex',
+      "Shank": "6.35mm hex",
       "Coating": "SITEH3RO",
       "Material": "M2 HSS",
       "Weight": "95g",
@@ -107,7 +107,7 @@ export const products: Product[] = [
     specs: {
       "Size Range": "6–30mm",
       "Steps": "13",
-      "Shank": '3/8" hex',
+      "Shank": "9.5mm hex",
       "Coating": "SITEH3RO",
       "Material": "M2 HSS",
       "Weight": "210g",
@@ -135,7 +135,7 @@ export const products: Product[] = [
     ],
     specs: {
       "Diameter": "12mm",
-      "Shank": '1/4" hex',
+      "Shank": "6.35mm hex",
       "Coating": "SITEH3RO",
       "Material": "M2 HSS",
       "Length": "105mm",
@@ -163,7 +163,7 @@ export const products: Product[] = [
     ],
     specs: {
       "Thread": "M12 x 1.75",
-      "Shank": '1/4" hex',
+      "Shank": "6.35mm hex",
       "Coating": "SITEH3RO",
       "Material": "HSS-E (cobalt)",
       "Flute": "Spiral",
@@ -192,7 +192,7 @@ export const products: Product[] = [
     specs: {
       "Pieces": "3",
       "Range": "4–30mm combined",
-      "Shanks": '1/4" & 3/8" hex',
+      "Shanks": "6.35mm & 9.5mm hex",
       "Coating": "SITEH3RO",
       "Case": "Molded polymer",
       "Total Weight": "480g",
@@ -253,7 +253,7 @@ export const products: Product[] = [
     specs: {
       "Size Range": "4–20mm",
       "Steps": "9",
-      "Shank": '1/4" hex',
+      "Shank": "6.35mm hex",
       "Coating": "SITEH3RO",
       "Material": "M2 HSS",
       "Weight": "155g",
