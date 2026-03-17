@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { VideoPlaceholder } from "@/components/VideoPlaceholder";
+import { YouTubeEmbed } from "@/components/YouTubeEmbed";
 import { ShippingInfo } from "@/components/ShippingInfo";
 import { ProductCard } from "@/components/ProductCard";
 import { getProductBySlug } from "@/data/products";
@@ -59,10 +59,10 @@ export default function ProductDetail() {
             <img src={product.imageUrl} alt={product.name} className="w-full h-full object-cover" />
           </div>
 
-          {product.videoPlaceholderUrl && (
-            <VideoPlaceholder
-              title="Tool in action"
-              subtitle={`Drop in your reel or demo video for ${product.name} here.`}
+          {product.youtubeVideoId && (
+            <YouTubeEmbed
+              videoId={product.youtubeVideoId}
+              title={`${product.name} — Demo Video`}
             />
           )}
         </div>

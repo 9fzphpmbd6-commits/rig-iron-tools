@@ -25,6 +25,7 @@ export type Product = {
   compareAtPrice?: number;
   imageUrl: string;
   videoPlaceholderUrl?: string;
+  youtubeVideoId?: string;
   isFeatured?: boolean;
   isBestSeller?: boolean;
   idealFor?: string[];
@@ -59,6 +60,7 @@ export const products: Product[] = [
     price: 111.99,
     imageUrl: "/images/products/siteh3ro-step-reamer.png",
     videoPlaceholderUrl: "/videos/siteh3ro-step-reamer-8-20-demo.mp4",
+    youtubeVideoId: "aw58Zifr1W0",
     isFeatured: true,
     isBestSeller: true,
     idealFor: ["Bridge work", "Structural steel", "Plant maintenance", "Metal fabrication"],
@@ -90,6 +92,7 @@ export const products: Product[] = [
     price: 104.99,
     imageUrl: "/images/products/siteh3ro-step-reamer.png",
     videoPlaceholderUrl: "/videos/siteh3ro-step-reamer-4-12-demo.mp4",
+    youtubeVideoId: "aw58Zifr1W0",
     idealFor: ["Sheet metal", "Enclosures", "HVAC ductwork", "Light structural"],
   },
   {
@@ -117,6 +120,7 @@ export const products: Product[] = [
     price: 142.99,
     imageUrl: "/images/products/siteh3ro-step-drill.png",
     videoPlaceholderUrl: "/videos/siteh3ro-step-drill-6-30-demo.mp4",
+    youtubeVideoId: "aw58Zifr1W0",
     isFeatured: true,
     idealFor: ["Structural steel", "Construction", "Metal plate work", "Ironwork"],
   },
@@ -146,6 +150,7 @@ export const products: Product[] = [
     price: 94.99,
     imageUrl: "/images/products/siteh3ro-car-reamer.jpg",
     videoPlaceholderUrl: "/videos/siteh3ro-car-reamer-demo.mp4",
+    youtubeVideoId: "aw58Zifr1W0",
     idealFor: ["Steel erection", "Bridge connections", "Structural bolting", "Alignment work"],
   },
   {
@@ -176,6 +181,7 @@ export const products: Product[] = [
     price: 125.99,
     imageUrl: "/images/products/siteh3ro-tap.png",
     videoPlaceholderUrl: "/videos/siteh3ro-tap-m12-demo.mp4",
+    youtubeVideoId: "aw58Zifr1W0",
     idealFor: ["On-site threading", "Structural maintenance", "Equipment repair", "Plant work"],
   },
   {
@@ -205,6 +211,7 @@ export const products: Product[] = [
     price: 357.99,
     imageUrl: "/images/products/siteh3ro-step-reamer-kit.png",
     videoPlaceholderUrl: "/videos/siteh3ro-3pc-kit-demo.mp4",
+    youtubeVideoId: "aw58Zifr1W0",
     isFeatured: true,
     isBestSeller: true,
     idealFor: ["Steel erection crews", "Bridge work", "Plant maintenance", "General construction"],
@@ -235,6 +242,7 @@ export const products: Product[] = [
     price: 1293.99,
     imageUrl: "/images/products/siteh3ro-ultimate-kit.png",
     videoPlaceholderUrl: "/videos/siteh3ro-ultimate-kit-demo.mp4",
+    youtubeVideoId: "aw58Zifr1W0",
     isFeatured: true,
     idealFor: ["Steel erection", "Bridge construction", "Refinery maintenance", "Fabrication shops"],
   },
@@ -262,6 +270,7 @@ export const products: Product[] = [
     },
     price: 125.99,
     imageUrl: "/images/products/siteh3ro-step-drill.png",
+    youtubeVideoId: "aw58Zifr1W0",
     idealFor: ["Sheet metal", "Structural steel", "Maintenance", "General metalwork"],
   },
 
@@ -289,6 +298,7 @@ export const products: Product[] = [
     },
     price: 127.99,
     imageUrl: "/images/products/siteh3ro-holder.png",
+    youtubeVideoId: "aw58Zifr1W0",
     isFeatured: true,
     idealFor: ["Steel erection", "On-site metalwork", "Fabrication", "Maintenance"],
   },
@@ -315,6 +325,7 @@ export const products: Product[] = [
     },
     price: 168.99,
     imageUrl: "/images/products/siteh3ro-holder.png",
+    youtubeVideoId: "aw58Zifr1W0",
     isFeatured: true,
     idealFor: ["Heavy structural steel", "Large impact wrench crews", "Fabrication shops", "Industrial maintenance"],
   },
@@ -346,6 +357,7 @@ export const products: Product[] = [
     price: 2170.99,
     imageUrl: "/images/products/magdrill-e5000-auto.png",
     videoPlaceholderUrl: "/videos/elite-50-demo.mp4",
+    youtubeVideoId: "Uo-M9d6jxfs",
     isFeatured: true,
     isBestSeller: true,
     idealFor: ["Structural steel erection", "Heavy fabrication", "Shipbuilding", "Bridge construction"],
@@ -378,6 +390,7 @@ export const products: Product[] = [
     price: 931.99,
     imageUrl: "/images/products/magdrill-e3000.png",
     videoPlaceholderUrl: "/videos/elite-35-demo.mp4",
+    youtubeVideoId: "Lrr0SH-TsL8",
     isFeatured: true,
     idealFor: ["Structural steel", "Overhead work", "Fabrication", "Maintenance shutdowns"],
   },
@@ -406,6 +419,7 @@ export const products: Product[] = [
     },
     price: 1725.99,
     imageUrl: "/images/products/magdrill-e5000-lp.png",
+    youtubeVideoId: "hUF-ksQfL8o",
     idealFor: ["Tight spaces", "Overhead drilling", "Low-clearance work", "Portable use"],
   },
   {
@@ -432,6 +446,7 @@ export const products: Product[] = [
     },
     price: 1045.99,
     imageUrl: "/images/products/magdrill-e4000.png",
+    youtubeVideoId: "Lrr0SH-TsL8",
     idealFor: ["Fabrication shops", "On-site drilling", "Maintenance", "Steel construction"],
   },
   {
@@ -459,6 +474,7 @@ export const products: Product[] = [
     price: 1725.99,
     imageUrl: "/images/products/magdrill-e6000.png",
     videoPlaceholderUrl: "/videos/pro-50-demo.mp4",
+    youtubeVideoId: "_OjoEpiZp6w",
     idealFor: ["Steel fabrication", "Construction", "Maintenance", "Production drilling"],
   },
   {
@@ -486,6 +502,7 @@ export const products: Product[] = [
     price: 821.99,
     imageUrl: "/images/products/magdrill-cmd400.png",
     videoPlaceholderUrl: "/videos/commando-40-demo.mp4",
+    youtubeVideoId: "vS_uMvnalJY",
     isBestSeller: true,
     idealFor: ["Workshops", "Small crews", "Maintenance work", "Budget-conscious buyers"],
   },
@@ -513,6 +530,7 @@ export const products: Product[] = [
     },
     price: 793.99,
     imageUrl: "/images/products/magdrill-cmd350.png",
+    youtubeVideoId: "PFK9gf7ZMlY",
     idealFor: ["Bridge work", "Deep drilling", "On-site solutions", "Entry-level buyers"],
   },
   {
@@ -540,6 +558,7 @@ export const products: Product[] = [
     price: 2822.99,
     imageUrl: "/images/products/magdrill-e8000.png",
     videoPlaceholderUrl: "/videos/elite-75-demo.mp4",
+    youtubeVideoId: "_OjoEpiZp6w",
     idealFor: ["Heavy structural steel", "Pipe penetrations", "Shipbuilding", "Large bolt connections"],
   },
 ];
