@@ -18,7 +18,7 @@ const FAQ_ANSWERS: Record<string, string> = {
   "Yard Crew discount":
     "Join The Yard Crew and get 10% off everything! It's free to sign up — just head over to our Members page. You'll get your discount applied automatically. 🔩\n\n→ Sign up at #/members",
   "Which mag drill for me?":
-    "Great question! Here's a quick guide:\n\n• Light/occasional work → Commando 35 ($429.99) — lightweight, simple, gets it done\n• General structural work → Pro 50 ($899.99) — reliable daily driver\n• Heavy-duty / large holes → Elite 50 ($1,299.99) or Elite 75 ($1,899.99) — smart features, max power\n\nWhat kind of work are you doing? That'll help narrow it down! 🔩",
+    "Great question! Here's a quick guide:\n\n• Light/occasional work → Commando 35 ($793.99) — lightweight, simple, gets it done\n• General structural work → Pro 50 ($1,725.99) — reliable daily driver\n• Heavy-duty / large holes → Elite 50 ($2,170.99) or Elite 75 ($2,822.99) — smart features, max power\n\nYard Crew members get 10% off these prices! What kind of work are you doing? That'll help narrow it down! 🔩",
   "Talk to a human":
     "You bet! Here's how to reach our team:\n\n📧 Email: texasholemakers@gmail.com\n📞 Phone: (469) 555-0187\n\nWe're here Monday–Friday, 8am–5pm CT. We'd love to hear from you!",
 };
