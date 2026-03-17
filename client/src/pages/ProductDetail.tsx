@@ -10,9 +10,8 @@ import { ShippingInfo } from "@/components/ShippingInfo";
 import { ProductCard } from "@/components/ProductCard";
 import { getProductBySlug } from "@/data/products";
 import { useRecommendations } from "@/lib/recommendations";
-import { useCart } from "@/lib/cart";
 import { useYardCrew } from "@/lib/yardCrew";
-import { useToast } from "@/hooks/use-toast";
+import { getSnipcartAttributes } from "@/lib/snipcart";
 import { SITE } from "@/data/siteConfig";
 
 export default function ProductDetail() {
@@ -20,9 +19,7 @@ export default function ProductDetail() {
   const slug = params?.slug || "";
   const product = getProductBySlug(slug);
   const [qty, setQty] = useState(1);
-  const { addItem } = useCart();
   const { isMember, getDiscountedPrice } = useYardCrew();
-  const { toast } = useToast();
 
   if (!product) {
     return (
@@ -38,11 +35,14 @@ export default function ProductDetail() {
   const categoryLabel = product.category === "siteh3ro" ? "SITEH3RO" : "Magnetic Drills";
   const categoryHref = product.category === "siteh3ro" ? "/siteh3ro" : "/magnetic-drills";
 
-  function handleAdd() {
-    addItem(product, qty);
-    // When Snipcart is enabled, this will also add to Snipcart's cart
-    toast({ title: "Added to cart", description: `${qty}x ${product.name} added to your cart.` });
-  }
+  const displayPrice = isMember && product.subcategory !== "holder"
+    ? getDiscountedPrice(product.price)
+    : product.price;
+
+  const snipcartProps = getSnipcartAttributes(
+    { ...product, price: displayPrice },
+    qty,
+  );
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
@@ -91,10 +91,10 @@ export default function ProductDetail() {
           </p>
 
           <div className="flex items-baseline gap-3">
-            {isMember ? (
+            {isMember && product.subcategory !== "holder" ? (
               <>
                 <span className="text-2xl font-bold text-green-600">
-                  ${getDiscountedPrice(product.price).toFixed(2)}
+                  ${displayPrice.toFixed(2)}
                 </span>
                 <span className="text-base text-muted-foreground line-through">
                   ${product.price.toFixed(2)}
@@ -158,7 +158,12 @@ export default function ProductDetail() {
                 <Plus className="w-4 h-4" />
               </Button>
             </div>
-            <Button size="lg" className="gap-2 flex-1 sm:flex-none" onClick={handleAdd} data-testid="button-add-to-cart">
+            <Button
+              size="lg"
+              className="gap-2 flex-1 sm:flex-none"
+              data-testid="button-add-to-cart"
+              {...snipcartProps}
+            >
               <ShoppingCart className="w-4 h-4" />
               Add to Cart
             </Button>

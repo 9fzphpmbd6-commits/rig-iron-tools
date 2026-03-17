@@ -2,25 +2,21 @@ import { Link } from "wouter";
 import { ShoppingCart, Star, Zap, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { useCart } from "@/lib/cart";
 import { useYardCrew } from "@/lib/yardCrew";
-import { useToast } from "@/hooks/use-toast";
+import { getSnipcartAttributes } from "@/lib/snipcart";
 import type { Product } from "@/data/products";
 
 export function ProductCard({ product }: { product: Product }) {
-  const { addItem } = useCart();
-  const { isMember } = useYardCrew();
-  const { toast } = useToast();
+  const { isMember, getDiscountedPrice } = useYardCrew();
 
-  function handleAdd(e: React.MouseEvent) {
-    e.preventDefault();
-    e.stopPropagation();
-    addItem(product);
-    toast({
-      title: "Added to cart",
-      description: `${product.name} has been added to your cart.`,
-    });
-  }
+  const displayPrice = isMember && product.subcategory !== "holder"
+    ? getDiscountedPrice(product.price)
+    : product.price;
+
+  const snipcartProps = getSnipcartAttributes({
+    ...product,
+    price: displayPrice,
+  });
 
   return (
     <div className="group bg-card border border-card-border rounded-lg overflow-hidden hover:shadow-md transition-shadow" data-testid={`card-product-${product.id}`}>
@@ -84,18 +80,22 @@ export function ProductCard({ product }: { product: Product }) {
 
         <div className="flex items-end justify-between pt-2">
           <div>
-            <span className="text-lg font-bold">${product.price.toFixed(2)}</span>
-            {product.compareAtPrice && (
-              <span className="ml-2 text-sm text-muted-foreground line-through">
-                ${product.compareAtPrice.toFixed(2)}
-              </span>
+            {isMember && product.subcategory !== "holder" ? (
+              <>
+                <span className="text-lg font-bold text-green-600">${displayPrice.toFixed(2)}</span>
+                <span className="ml-2 text-sm text-muted-foreground line-through">
+                  ${product.price.toFixed(2)}
+                </span>
+              </>
+            ) : (
+              <span className="text-lg font-bold">${product.price.toFixed(2)}</span>
             )}
           </div>
           <Button
             size="sm"
-            onClick={handleAdd}
             className="gap-1.5"
             data-testid={`button-add-to-cart-${product.id}`}
+            {...snipcartProps}
           >
             <ShoppingCart className="w-3.5 h-3.5" />
             Add

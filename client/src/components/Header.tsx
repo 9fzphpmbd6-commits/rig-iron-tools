@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { ShoppingCart, Search, Menu, X, User, Sun, Moon } from "lucide-react";
 import { Logo } from "./Logo";
-import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/button";
 
 const NAV_LINKS = [
@@ -17,7 +16,6 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [dark, setDark] = useState(false);
-  const { itemCount } = useCart();
   const [location] = useLocation();
 
   function toggleDark() {
@@ -95,17 +93,17 @@ export function Header() {
                 </Button>
               </Link>
 
-              {/* Cart */}
-              <Link href="/cart">
-                <Button variant="ghost" size="icon" className="relative" data-testid="link-cart">
-                  <ShoppingCart className="h-5 w-5" />
-                  {itemCount > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
-                      {itemCount}
-                    </span>
-                  )}
-                </Button>
-              </Link>
+              {/* Cart — opens Snipcart sidebar */}
+              <Button
+                variant="ghost"
+                size="icon"
+                className="snipcart-checkout relative"
+                data-testid="button-cart"
+                aria-label="Shopping cart"
+              >
+                <ShoppingCart className="h-5 w-5" />
+                <span className="snipcart-items-count absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs font-bold min-w-[1.25rem] h-5 rounded-full flex items-center justify-center px-1 empty:hidden" />
+              </Button>
 
               {/* Mobile menu button */}
               <Button

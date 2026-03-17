@@ -243,3 +243,9 @@
   filter: drop-shadow(0 12px 24px rgba(196, 85, 10, 0.35));
   animation: drill-shake 0.6s ease-in-out;
 }
+
+/* Snipcart badge — hide when cart is empty */
+.snipcart-items-count:empty,
+.snipcart-items-count[data-item-count="0"] {
+  display: none !important;
+}
