@@ -1,6 +1,7 @@
 export const SITE = {
   name: "Texas Hole Makers",
-  tagline: "Drilling holes across Texas — one steel beam at a time.",
+  tagline: "Drill it like you mean it.",
+  secondaryTagline: "Satisfaction guaranteed — every hole, every time.",
   description: "Your focused source for Unibor SITEH3RO impact-ready tools and magnetic drills. Built for steel erectors, fabricators, and maintenance crews across Texas and beyond.",
   memberProgram: "The Yard Crew",
   brandHashtag: "#TexasHoleMakers",
