@@ -129,18 +129,18 @@ export default function ProductDetail() {
                     <Gift className="w-4 h-4 text-primary" />
                     <span className="text-sm font-bold text-primary">🔩 Get This Holder FREE</span>
                   </div>
-                  <p className="text-xs text-primary/70">Join The Yard Crew and get a free SITEH3RO Holder when you buy any SITEH3RO cutting tool — plus 10% off everything.</p>
+                  <p className="text-xs text-primary/70">Join The Yard Crew and get a free SITEH3RO Holder when you buy any SITEH3RO cutting tool — plus 15% off everything.</p>
                 </div>
               </Link>
             )
           ) : isMember ? (
             <p className="text-sm font-medium text-green-600">
-              🔩 Yard Crew Price — You're saving 10%!
+              🔩 Yard Crew Price — You're saving 15%!
             </p>
           ) : (
             <Link href="/members" className="block">
               <div className="bg-primary/5 border border-primary/20 rounded-lg px-3 py-2 text-sm text-primary font-medium hover:bg-primary/10 transition-colors">
-                🔩 Join The Yard Crew for 10% Off
+                🔩 Join The Yard Crew for 15% Off
               </div>
             </Link>
           )}

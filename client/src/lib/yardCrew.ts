@@ -26,11 +26,11 @@ export function useYardCrew() {
   }, []);
 
   const getDiscount = useCallback((price: number) => {
-    return isMember ? price * 0.10 : 0;
+    return isMember ? price * 0.15 : 0;
   }, [isMember]);
 
   const getDiscountedPrice = useCallback((price: number) => {
-    return isMember ? price * 0.90 : price;
+    return isMember ? price * 0.85 : price;
   }, [isMember]);
 
   return { isMember, memberInfo, joinYardCrew, leaveYardCrew, getDiscount, getDiscountedPrice };

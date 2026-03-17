@@ -46,7 +46,7 @@ export function ProductCard({ product }: { product: Product }) {
               </Badge>
             ) : isMember ? (
               <Badge className="bg-green-600 text-white text-xs">
-                🔩 -10%
+                🔩 -15%
               </Badge>
             ) : product.subcategory === "holder" ? (
               <Badge className="bg-primary text-primary-foreground text-xs gap-1">

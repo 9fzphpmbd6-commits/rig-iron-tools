@@ -14,7 +14,6 @@ export const SITE = {
   },
   contact: {
     email: "texasholemakers@gmail.com",
-    phone: "(469) 555-0187",
   },
   shipping: {
     estimate: "Ships in 5–10 business days",

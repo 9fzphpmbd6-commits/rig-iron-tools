@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { useYardCrew } from "@/lib/yardCrew";
-import { Users, Percent, Rocket, Award, Star, Check } from "lucide-react";
+import { Users, Percent, Rocket, Award, Star, Check, Gift, ShieldCheck } from "lucide-react";
 
 export default function Members() {
   const { toast } = useToast();
@@ -13,14 +13,16 @@ export default function Members() {
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
 
-  function handleSignUp(e: React.FormEvent) {
+  function handleFreeSignUp(e: React.FormEvent) {
     e.preventDefault();
     const name = nameRef.current?.value || "";
     const email = emailRef.current?.value || "";
     joinYardCrew(name, email);
     setSubmitted(true);
-    toast({ title: "Welcome to The Yard Crew! 🔩", description: "You now get 10% off everything." });
+    toast({ title: "Account created! 🔩", description: "You now have a free account. Upgrade to Yard Crew for 15% off!" });
   }
+
+  const origin = typeof window !== "undefined" ? window.location.origin : "";
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
@@ -39,19 +41,19 @@ export default function Members() {
 
       {/* Tier cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-        {/* Free */}
+        {/* Free Account */}
         <div className="bg-card border border-card-border rounded-xl p-6 space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="font-display text-lg font-bold">Free Member</h2>
+            <h2 className="font-display text-lg font-bold">Free Account</h2>
             <Badge variant="secondary">Free</Badge>
           </div>
-          <p className="text-sm text-muted-foreground">Join the crew and start saving immediately.</p>
+          <p className="text-sm text-muted-foreground">Create an account and start shopping with perks.</p>
           <ul className="space-y-2">
             {[
-              { icon: Percent, text: "5% recurring discount on SITEH3RO tools" },
-              { icon: Rocket, text: "Early access to new magnetic drill releases" },
-              { icon: Award, text: "Eligible for Featured Builds listing" },
-              { icon: Star, text: "Email-only promotions and bundle deals" },
+              { icon: Star, text: "Order tracking and history" },
+              { icon: Award, text: "Wishlist and saved items" },
+              { icon: Rocket, text: "Early access to new products" },
+              { icon: Percent, text: "Email-only promotions and deals" },
             ].map((item) => (
               <li key={item.text} className="flex items-start gap-2.5 text-sm">
                 <item.icon className="w-4 h-4 text-primary shrink-0 mt-0.5" />
@@ -61,23 +63,23 @@ export default function Members() {
           </ul>
         </div>
 
-        {/* Crew Partner */}
+        {/* Yard Crew Lifetime */}
         <div className="bg-card border-2 border-primary rounded-xl p-6 space-y-4 relative">
           <div className="absolute -top-3 left-6">
             <Badge className="bg-primary text-primary-foreground">Recommended</Badge>
           </div>
           <div className="flex items-center justify-between pt-1">
-            <h2 className="font-display text-lg font-bold">Crew Partner</h2>
-            <Badge variant="outline">By Invitation</Badge>
+            <h2 className="font-display text-lg font-bold">Yard Crew Lifetime</h2>
+            <Badge variant="outline" className="font-bold">$100 one-time</Badge>
           </div>
-          <p className="text-sm text-muted-foreground">For established crews placing regular orders.</p>
+          <p className="text-sm text-muted-foreground">One payment. 15% off every order. Forever.</p>
           <ul className="space-y-2">
             {[
-              { icon: Percent, text: "10% recurring discount on all products" },
-              { icon: Rocket, text: "Priority early access and pre-order" },
-              { icon: Award, text: "Featured listing with priority badge" },
-              { icon: Star, text: "Occasional free tool-bundle promos" },
-              { icon: Users, text: "Dedicated support for crew orders" },
+              { icon: Percent, text: "15% off EVERY order for life" },
+              { icon: Gift, text: "2 free SITEH3RO™ Holders (1/2\" + 3/4\")" },
+              { icon: ShieldCheck, text: "Priority support" },
+              { icon: Award, text: "Featured Builds listing" },
+              { icon: Star, text: "Exclusive bundle deals" },
             ].map((item) => (
               <li key={item.text} className="flex items-start gap-2.5 text-sm">
                 <item.icon className="w-4 h-4 text-primary shrink-0 mt-0.5" />
@@ -85,10 +87,23 @@ export default function Members() {
               </li>
             ))}
           </ul>
+          <button
+            className="snipcart-add-item w-full bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8 text-sm font-medium transition-colors"
+            data-item-id="yard-crew-lifetime"
+            data-item-name="Yard Crew Lifetime Membership"
+            data-item-price="100.00"
+            data-item-url={`${origin}/#/members`}
+            data-item-description="One-time lifetime membership — 15% off every order + 2 free SITEH3RO holders"
+            data-item-image="/images/mascot.png"
+            data-item-quantity="1"
+            data-item-max-quantity="1"
+          >
+            Join The Yard Crew — $100 Lifetime 🔩
+          </button>
         </div>
       </div>
 
-      {/* Sign-up form */}
+      {/* Free sign-up form */}
       <div className="bg-card border border-card-border rounded-xl p-6 sm:p-8 max-w-2xl mx-auto">
         {isMember && memberInfo ? (
           <div className="text-center py-8 space-y-3">
@@ -97,24 +112,24 @@ export default function Members() {
             </div>
             <p className="font-display text-lg font-bold">You're in The Yard Crew! 🔩</p>
             <p className="text-sm text-muted-foreground">
-              Welcome, <strong>{memberInfo.name}</strong> ({memberInfo.email}). Your 10% discount is applied automatically.
+              Welcome, <strong>{memberInfo.name}</strong> ({memberInfo.email}). Your 15% discount is applied automatically.
             </p>
           </div>
         ) : (
           <>
-            <h2 className="font-display text-lg font-bold mb-1">Sign Up for Free Membership</h2>
-            <p className="text-sm text-muted-foreground mb-6">Join The Yard Crew for an instant 10% discount on all products.</p>
+            <h2 className="font-display text-lg font-bold mb-1">Create Free Account</h2>
+            <p className="text-sm text-muted-foreground mb-6">Sign up for a free account to get started. Upgrade to Yard Crew Lifetime anytime.</p>
 
             {submitted ? (
               <div className="text-center py-8 space-y-3">
                 <div className="w-14 h-14 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto">
                   <Check className="w-7 h-7 text-green-600 dark:text-green-400" />
                 </div>
-                <p className="font-semibold">You're in The Yard Crew! 🔩</p>
-                <p className="text-sm text-muted-foreground">Your 10% discount is now active on all products.</p>
+                <p className="font-semibold">Account created! 🔩</p>
+                <p className="text-sm text-muted-foreground">Upgrade to Yard Crew Lifetime above for 15% off every order.</p>
               </div>
             ) : (
-              <form onSubmit={handleSignUp} className="space-y-4">
+              <form onSubmit={handleFreeSignUp} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-1">Name</label>
@@ -133,21 +148,8 @@ export default function Members() {
                     <input placeholder="e.g. Foreman, Superintendent" className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" />
                   </div>
                 </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">How many people on your crew?</label>
-                  <input type="number" min="1" className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" />
-                </div>
-                <fieldset className="space-y-2">
-                  <legend className="text-sm font-medium">What kind of work do you do?</legend>
-                  {["I install structural steel", "I do plant maintenance", "I work on bridges/infrastructure", "I do metal fabrication"].map((opt) => (
-                    <label key={opt} className="flex items-center gap-2 text-sm text-muted-foreground cursor-pointer">
-                      <input type="checkbox" className="rounded border-border" />
-                      {opt}
-                    </label>
-                  ))}
-                </fieldset>
                 <Button type="submit" size="lg" className="w-full" data-testid="button-member-signup">
-                  Join The Yard Crew 🔩
+                  Create Free Account
                 </Button>
               </form>
             )}

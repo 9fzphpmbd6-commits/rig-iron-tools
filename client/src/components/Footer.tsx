@@ -36,7 +36,9 @@ export function Footer() {
               <li><Link href="/about" className="hover:text-primary transition-colors">About Us</Link></li>
               <li><Link href="/members" className="hover:text-primary transition-colors">The Yard Crew</Link></li>
               <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
-              <li><Link href="/shipping" className="hover:text-primary transition-colors">Shipping &amp; Returns</Link></li>
+              <li><Link href="/support" className="hover:text-primary transition-colors">Support</Link></li>
+              <li><Link href="/shipping" className="hover:text-primary transition-colors">Shipping</Link></li>
+              <li><Link href="/returns" className="hover:text-primary transition-colors">Returns</Link></li>
               <li><Link href="/warranty" className="hover:text-primary transition-colors">Warranty</Link></li>
             </ul>
           </div>

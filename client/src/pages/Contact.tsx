@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin, Check } from "lucide-react";
+import { Mail, MapPin, Check } from "lucide-react";
 import { SITE } from "@/data/siteConfig";
 
 export default function Contact() {
@@ -32,13 +32,6 @@ export default function Contact() {
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <Phone className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-            <div>
-              <p className="text-sm font-medium">Phone</p>
-              <p className="text-sm text-muted-foreground">{SITE.contact.phone}</p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3">
             <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
             <div>
               <p className="text-sm font-medium">Location</p>
@@ -46,7 +39,7 @@ export default function Contact() {
             </div>
           </div>
           <p className="text-xs text-muted-foreground pt-4">
-            We typically respond within 1–2 business days. For urgent tool questions, call us directly.
+            We typically respond within 1–2 business days.
           </p>
         </div>
 

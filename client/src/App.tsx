@@ -20,6 +20,8 @@ import Contact from "@/pages/Contact";
 import Cart from "@/pages/Cart";
 import Shipping from "@/pages/Shipping";
 import Warranty from "@/pages/Warranty";
+import Support from "@/pages/Support";
+import Returns from "@/pages/Returns";
 import NotFound from "@/pages/not-found";
 
 function AppRouter() {
@@ -38,6 +40,8 @@ function AppRouter() {
       <Route path="/cart" component={Cart} />
       <Route path="/shipping" component={Shipping} />
       <Route path="/warranty" component={Warranty} />
+      <Route path="/support" component={Support} />
+      <Route path="/returns" component={Returns} />
       <Route component={NotFound} />
     </Switch>
   );

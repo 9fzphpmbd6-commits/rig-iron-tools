@@ -14,13 +14,13 @@ const FAQ_ANSWERS: Record<string, string> = {
   "Shipping info":
     "We ship in 5–10 business days from US warehouses. You'll get tracking info as soon as your order ships. If you need something faster, drop us a line and we'll see what we can do!",
   "Returns & warranty":
-    "We offer 30-day returns on all products, no hassle. Every Unibor product comes with a manufacturer warranty. If something's not right, we'll make it right — that's the Texas way.",
+    "We offer 14-day free returns on all products — full refund, no questions asked, as long as the item is unused and in original packaging. Returns between 15–45 days get a 50% refund if the item is in resalable condition. Every Unibor product also comes with a manufacturer warranty.",
   "Yard Crew discount":
-    "Join The Yard Crew and get 10% off everything! It's free to sign up — just head over to our Members page. You'll get your discount applied automatically. 🔩\n\n→ Sign up at #/members",
+    "Join The Yard Crew for $100 lifetime and get 15% off EVERY order — forever! You also get 2 free SITEH3RO holders, priority support, and exclusive deals. 🔩\n\n→ Sign up at #/members",
   "Which mag drill for me?":
-    "Great question! Here's a quick guide:\n\n• Light/occasional work → Commando 35 ($793.99) — lightweight, simple, gets it done\n• General structural work → Pro 50 ($1,725.99) — reliable daily driver\n• Heavy-duty / large holes → Elite 50 ($2,170.99) or Elite 75 ($2,822.99) — smart features, max power\n\nYard Crew members get 10% off these prices! What kind of work are you doing? That'll help narrow it down! 🔩",
+    "Great question! Here's a quick guide:\n\n• Light/occasional work → CMD350 ($793.99) — 1200W, industry-leading 7\" stroke\n• General structural work → E4000 ($1,045.99) — DrillSmart, 2-speed gearbox\n• Tight spaces → E5000 LP ($1,725.99) — world's largest capacity low profile\n• Heavy-duty / auto drilling → E5000 Auto ($2,170.99) — fully automatic\n• Maximum capacity → E8000 ($2,822.99) — 4\" cutter, 2000W\n\nYard Crew members get 15% off these prices! What kind of work are you doing? 🔩",
   "Talk to a human":
-    "You bet! Here's how to reach our team:\n\n📧 Email: texasholemakers@gmail.com\n📞 Phone: (469) 555-0187\n\nWe're here Monday–Friday, 8am–5pm CT. We'd love to hear from you!",
+    "You bet! Here's how to reach our team:\n\n📧 Email: texasholemakers@gmail.com\n\nWe typically respond within 1–2 business days. We'd love to hear from you!",
 };
 
 const QUICK_QUESTIONS = Object.keys(FAQ_ANSWERS);
@@ -29,9 +29,9 @@ const KEYWORD_MAP: Array<{ keywords: string[]; question: string }> = [
   { keywords: ["siteh3ro", "coating", "impact", "hex"], question: "What's SITEH3RO?" },
   { keywords: ["ship", "shipping", "delivery", "track", "arrive"], question: "Shipping info" },
   { keywords: ["return", "warranty", "refund", "broken", "defect"], question: "Returns & warranty" },
-  { keywords: ["discount", "yard crew", "member", "save", "percent", "10%"], question: "Yard Crew discount" },
-  { keywords: ["mag drill", "magnetic drill", "which drill", "recommend", "commando", "elite", "pro"], question: "Which mag drill for me?" },
-  { keywords: ["human", "contact", "email", "phone", "talk", "help", "support"], question: "Talk to a human" },
+  { keywords: ["discount", "yard crew", "member", "save", "percent", "15%"], question: "Yard Crew discount" },
+  { keywords: ["mag drill", "magnetic drill", "which drill", "recommend", "cmd", "e3000", "e4000", "e5000", "e6000", "e8000"], question: "Which mag drill for me?" },
+  { keywords: ["human", "contact", "email", "talk", "help", "support"], question: "Talk to a human" },
 ];
 
 function matchKeywords(input: string): string | null {
