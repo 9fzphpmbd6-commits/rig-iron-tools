@@ -76,7 +76,7 @@ export const featuredBuilds: FeaturedBuild[] = [
     location: "Midland-Odessa, TX",
     projectTitle: "Tank Battery Platform",
     toolsUsed: ["md-pr-002", "sh-sr-002"],
-    shortDescription: "Access platforms for a new tank battery. The Pro 35 was light enough to carry up ladders and powerful enough to drill through 9.5mm plate all day.",
+    shortDescription: "Access platforms for a new tank battery. The Pro 35 was light enough to carry up ladders and powerful enough to drill through 3/8\" plate all day.",
     badge: "Best Value Build",
     views: 231,
   },

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useRoute } from "wouter";
-import { ShoppingCart, Minus, Plus, Star, Zap, ArrowRight, Hash } from "lucide-react";
+import { ShoppingCart, Minus, Plus, Star, Zap, ArrowRight, Hash, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -112,7 +112,28 @@ export default function ProductDetail() {
             )}
           </div>
 
-          {isMember ? (
+          {/* Yard Crew promo */}
+          {product.subcategory === "holder" ? (
+            isMember ? (
+              <div className="bg-green-50 border border-green-200 rounded-lg px-4 py-3 flex items-center gap-3">
+                <Gift className="w-5 h-5 text-green-600 shrink-0" />
+                <div>
+                  <p className="text-sm font-bold text-green-700">FREE with Yard Crew Membership</p>
+                  <p className="text-xs text-green-600">This holder is included free as a Yard Crew member when you purchase any SITEH3RO cutting tool.</p>
+                </div>
+              </div>
+            ) : (
+              <Link href="/members" className="block">
+                <div className="bg-primary/5 border border-primary/20 rounded-lg px-4 py-3 hover:bg-primary/10 transition-colors">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Gift className="w-4 h-4 text-primary" />
+                    <span className="text-sm font-bold text-primary">🔩 Get This Holder FREE</span>
+                  </div>
+                  <p className="text-xs text-primary/70">Join The Yard Crew and get a free SITEH3RO Holder when you buy any SITEH3RO cutting tool — plus 10% off everything.</p>
+                </div>
+              </Link>
+            )
+          ) : isMember ? (
             <p className="text-sm font-medium text-green-600">
               🔩 Yard Crew Price — You're saving 10%!
             </p>

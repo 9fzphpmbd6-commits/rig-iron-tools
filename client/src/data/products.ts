@@ -6,6 +6,7 @@ export type Subcategory =
   | "car-reamer"
   | "tap"
   | "kit"
+  | "holder"
   | "elite-magnetic-drill"
   | "pro-magnetic-drill"
   | "budget-magnetic-drill";
@@ -49,7 +50,7 @@ export const products: Product[] = [
     specs: {
       "Size Range": "8–20mm",
       "Steps": "9",
-      "Shank": "6.35mm hex",
+      "Shank": "1/4\" hex",
       "Coating": "SITEH3RO",
       "Material": "M2 HSS",
       "Weight": "145g",
@@ -79,7 +80,7 @@ export const products: Product[] = [
     specs: {
       "Size Range": "4–12mm",
       "Steps": "7",
-      "Shank": "6.35mm hex",
+      "Shank": "1/4\" hex",
       "Coating": "SITEH3RO",
       "Material": "M2 HSS",
       "Weight": "95g",
@@ -107,7 +108,7 @@ export const products: Product[] = [
     specs: {
       "Size Range": "6–30mm",
       "Steps": "13",
-      "Shank": "9.5mm hex",
+      "Shank": "3/8\" hex",
       "Coating": "SITEH3RO",
       "Material": "M2 HSS",
       "Weight": "210g",
@@ -135,7 +136,7 @@ export const products: Product[] = [
     ],
     specs: {
       "Diameter": "12mm",
-      "Shank": "6.35mm hex",
+      "Shank": "1/4\" hex",
       "Coating": "SITEH3RO",
       "Material": "M2 HSS",
       "Length": "105mm",
@@ -163,7 +164,7 @@ export const products: Product[] = [
     ],
     specs: {
       "Thread": "M12 x 1.75",
-      "Shank": "6.35mm hex",
+      "Shank": "1/4\" hex",
       "Coating": "SITEH3RO",
       "Material": "HSS-E (cobalt)",
       "Flute": "Spiral",
@@ -192,7 +193,7 @@ export const products: Product[] = [
     specs: {
       "Pieces": "3",
       "Range": "4–30mm combined",
-      "Shanks": "6.35mm & 9.5mm hex",
+      "Shanks": "1/4\" & 3/8\" hex",
       "Coating": "SITEH3RO",
       "Case": "Molded polymer",
       "Total Weight": "480g",
@@ -253,7 +254,7 @@ export const products: Product[] = [
     specs: {
       "Size Range": "4–20mm",
       "Steps": "9",
-      "Shank": "6.35mm hex",
+      "Shank": "1/4\" hex",
       "Coating": "SITEH3RO",
       "Material": "M2 HSS",
       "Weight": "155g",
@@ -261,6 +262,60 @@ export const products: Product[] = [
     price: 54.99,
     imageUrl: "/images/products/siteh3ro-step-drill.png",
     idealFor: ["Sheet metal", "Structural steel", "Maintenance", "General metalwork"],
+  },
+
+  // ── SITEH3RO HOLDERS / ADAPTERS ────────────────
+  {
+    id: "sh-hl-001",
+    slug: "siteh3ro-holder-half-inch",
+    name: 'SITEH3RO Holder — 1/2"',
+    category: "siteh3ro",
+    subcategory: "holder",
+    shortDescription: 'Adapter for 1/2" impact wrenches — use the full SITEH3RO range with your existing driver.',
+    longDescription: 'Turn your 1/2" impact wrench into a multipurpose metalworking machine. The SITEH3RO Holder is designed for use with the specialist SITEH3RO range of cutting tools, allowing your handheld tool to use step drills, step reamers, car reamers, and taps. Quick tool changes on-site — no heavy machinery needed.',
+    keyFeatures: [
+      'Fits any standard 1/2" impact wrench',
+      "Works with the entire SITEH3RO cutting tool range",
+      "Quick tool changes — swap bits in seconds",
+      "Hardened steel construction",
+      "Designed in Sheffield, England",
+    ],
+    specs: {
+      'Drive Size': '1/2"',
+      "Compatibility": "All SITEH3RO cutting tools",
+      "Material": "Hardened steel",
+      "Coating": "Black oxide",
+    },
+    price: 148.00,
+    imageUrl: "/images/products/siteh3ro-holder.png",
+    isFeatured: true,
+    idealFor: ["Steel erection", "On-site metalwork", "Fabrication", "Maintenance"],
+  },
+  {
+    id: "sh-hl-002",
+    slug: "siteh3ro-holder-three-quarter-inch",
+    name: 'SITEH3RO Holder — 3/4"',
+    category: "siteh3ro",
+    subcategory: "holder",
+    shortDescription: 'Adapter for 3/4" impact wrenches — heavy-duty option for bigger drivers.',
+    longDescription: 'The 3/4" SITEH3RO Holder lets you run the full SITEH3RO range on your heavy-duty impact wrench. Built for crews using larger drivers on structural steel and heavy fabrication. Same quick-change design, bigger drive to match your tool.',
+    keyFeatures: [
+      'Fits any standard 3/4" impact wrench',
+      "Works with the entire SITEH3RO cutting tool range",
+      "Heavy-duty for bigger impact drivers",
+      "Hardened steel construction",
+      "Designed in Sheffield, England",
+    ],
+    specs: {
+      'Drive Size': '3/4"',
+      "Compatibility": "All SITEH3RO cutting tools",
+      "Material": "Hardened steel",
+      "Coating": "Black oxide",
+    },
+    price: 148.00,
+    imageUrl: "/images/products/siteh3ro-holder.png",
+    isFeatured: true,
+    idealFor: ["Heavy structural steel", "Large impact wrench crews", "Fabrication shops", "Industrial maintenance"],
   },
 
   // ── MAGNETIC DRILLS ──────────────────────────────

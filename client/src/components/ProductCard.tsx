@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ShoppingCart, Star, Zap } from "lucide-react";
+import { ShoppingCart, Star, Zap, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/lib/cart";
@@ -44,11 +44,19 @@ export function ProductCard({ product }: { product: Product }) {
                 Impact-Ready
               </Badge>
             )}
-            {isMember && (
+            {isMember && product.subcategory === "holder" ? (
+              <Badge className="bg-green-600 text-white text-xs gap-1">
+                <Gift className="w-3 h-3" /> FREE
+              </Badge>
+            ) : isMember ? (
               <Badge className="bg-green-600 text-white text-xs">
                 🔩 -10%
               </Badge>
-            )}
+            ) : product.subcategory === "holder" ? (
+              <Badge className="bg-primary text-primary-foreground text-xs gap-1">
+                <Gift className="w-3 h-3" /> Free w/ Yard Crew
+              </Badge>
+            ) : null}
           </div>
         </div>
       </Link>
