@@ -16,7 +16,7 @@ export const SNIPCART_ENABLED = true;
 export function getSnipcartAttributes(product: Product, quantity = 1) {
   // Use current origin so this works on any deploy URL (Netlify, custom domain, etc.)
   // Snipcart crawls this URL to validate the price matches the data attributes.
-  const origin = typeof window !== "undefined" ? window.location.origin : "https://lonestardrilling.netlify.app";
+  const origin = typeof window !== "undefined" ? window.location.origin : "https://texasholemakers.com";
   const productUrl = `${origin}/#/products/${product.slug}`;
 
   return {

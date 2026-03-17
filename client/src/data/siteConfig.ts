@@ -1,4 +1,5 @@
 export const SITE = {
+  url: "https://texasholemakers.com",
   name: "Texas Hole Makers",
   tagline: "Drill it like you mean it.",
   secondaryTagline: "Satisfaction guaranteed — every hole, every time.",
