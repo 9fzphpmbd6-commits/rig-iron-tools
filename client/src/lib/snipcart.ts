@@ -14,8 +14,10 @@ export const SNIPCART_ENABLED = true;
  * Snipcart can crawl and find the same button with matching price.
  */
 export function getSnipcartAttributes(product: Product, quantity = 1) {
-  // Use the deployed Netlify URL as the canonical product URL for validation
-  const productUrl = `https://lonestardrilling.netlify.app/#/products/${product.slug}`;
+  // Use current origin so this works on any deploy URL (Netlify, custom domain, etc.)
+  // Snipcart crawls this URL to validate the price matches the data attributes.
+  const origin = typeof window !== "undefined" ? window.location.origin : "https://lonestardrilling.netlify.app";
+  const productUrl = `${origin}/#/products/${product.slug}`;
 
   return {
     className: "snipcart-add-item",
