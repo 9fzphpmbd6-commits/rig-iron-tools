@@ -11,6 +11,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { getProductBySlug } from "@/data/products";
 import { useRecommendations } from "@/lib/recommendations";
 import { useCart } from "@/lib/cart";
+import { useYardCrew } from "@/lib/yardCrew";
 import { useToast } from "@/hooks/use-toast";
 import { SITE } from "@/data/siteConfig";
 
@@ -20,6 +21,7 @@ export default function ProductDetail() {
   const product = getProductBySlug(slug);
   const [qty, setQty] = useState(1);
   const { addItem } = useCart();
+  const { isMember, getDiscountedPrice } = useYardCrew();
   const { toast } = useToast();
 
   if (!product) {
@@ -38,6 +40,7 @@ export default function ProductDetail() {
 
   function handleAdd() {
     addItem(product, qty);
+    // When Snipcart is enabled, this will also add to Snipcart's cart
     toast({ title: "Added to cart", description: `${qty}x ${product.name} added to your cart.` });
   }
 
@@ -88,18 +91,38 @@ export default function ProductDetail() {
           </p>
 
           <div className="flex items-baseline gap-3">
-            <span className="text-2xl font-bold">${product.price.toFixed(2)}</span>
-            {product.compareAtPrice && (
-              <span className="text-base text-muted-foreground line-through">
-                ${product.compareAtPrice.toFixed(2)}
-              </span>
+            {isMember ? (
+              <>
+                <span className="text-2xl font-bold text-green-600">
+                  ${getDiscountedPrice(product.price).toFixed(2)}
+                </span>
+                <span className="text-base text-muted-foreground line-through">
+                  ${product.price.toFixed(2)}
+                </span>
+              </>
+            ) : (
+              <>
+                <span className="text-2xl font-bold">${product.price.toFixed(2)}</span>
+                {product.compareAtPrice && (
+                  <span className="text-base text-muted-foreground line-through">
+                    ${product.compareAtPrice.toFixed(2)}
+                  </span>
+                )}
+              </>
             )}
           </div>
 
-          <p className="text-sm text-primary font-medium">
-            Yard Crew members save more on this tool —{" "}
-            <Link href="/members" className="underline">Learn more</Link>
-          </p>
+          {isMember ? (
+            <p className="text-sm font-medium text-green-600">
+              🔩 Yard Crew Price — You're saving 10%!
+            </p>
+          ) : (
+            <Link href="/members" className="block">
+              <div className="bg-primary/5 border border-primary/20 rounded-lg px-3 py-2 text-sm text-primary font-medium hover:bg-primary/10 transition-colors">
+                🔩 Join The Yard Crew for 10% Off
+              </div>
+            </Link>
+          )}
 
           <p className="text-sm text-muted-foreground leading-relaxed">{product.shortDescription}</p>
 

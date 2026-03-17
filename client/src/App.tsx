@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { DrillbitDebbie } from "@/components/DrillbitDebbie";
 import Home from "@/pages/Home";
 import Products from "@/pages/Products";
 import ProductDetail from "@/pages/ProductDetail";
@@ -53,6 +54,7 @@ function App() {
             </main>
             <Footer />
           </div>
+          <DrillbitDebbie />
         </Router>
       </TooltipProvider>
     </QueryClientProvider>

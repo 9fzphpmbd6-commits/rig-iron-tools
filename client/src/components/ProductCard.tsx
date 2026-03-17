@@ -3,11 +3,13 @@ import { ShoppingCart, Star, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/lib/cart";
+import { useYardCrew } from "@/lib/yardCrew";
 import { useToast } from "@/hooks/use-toast";
 import type { Product } from "@/data/products";
 
 export function ProductCard({ product }: { product: Product }) {
   const { addItem } = useCart();
+  const { isMember } = useYardCrew();
   const { toast } = useToast();
 
   function handleAdd(e: React.MouseEvent) {
@@ -40,6 +42,11 @@ export function ProductCard({ product }: { product: Product }) {
               <Badge variant="outline" className="bg-background/80 text-xs">
                 <Zap className="w-3 h-3 mr-1" />
                 Impact-Ready
+              </Badge>
+            )}
+            {isMember && (
+              <Badge className="bg-green-600 text-white text-xs">
+                🔩 -10%
               </Badge>
             )}
           </div>

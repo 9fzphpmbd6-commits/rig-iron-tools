@@ -3,11 +3,16 @@ import { Link } from "wouter";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart";
+import { useYardCrew } from "@/lib/yardCrew";
+import { SNIPCART_ENABLED } from "@/lib/snipcart";
 import { Minus, Plus, Trash2, ShoppingBag, Bot, FileText, Mail, CreditCard, AlertCircle } from "lucide-react";
 
 export default function Cart() {
   const { items, updateQuantity, removeItem, clearCart, subtotal } = useCart();
+  const { isMember, getDiscount } = useYardCrew();
   const [showCheckout, setShowCheckout] = useState(false);
+  const yardCrewSavings = isMember ? getDiscount(subtotal) : 0;
+  const total = subtotal - yardCrewSavings;
 
   if (items.length === 0) {
     return (
@@ -77,21 +82,40 @@ export default function Cart() {
           <span className="text-muted-foreground">Subtotal</span>
           <span className="font-semibold">${subtotal.toFixed(2)}</span>
         </div>
+        {isMember && yardCrewSavings > 0 && (
+          <div className="flex justify-between text-sm text-green-600">
+            <span className="font-medium">🔩 Yard Crew Discount: -10%</span>
+            <span className="font-semibold">-${yardCrewSavings.toFixed(2)}</span>
+          </div>
+        )}
+        {!isMember && (
+          <Link href="/members">
+            <p className="text-xs text-primary font-medium hover:underline">
+              🔩 Join The Yard Crew & save 10% — Sign up
+            </p>
+          </Link>
+        )}
         <div className="flex justify-between text-sm">
           <span className="text-muted-foreground">Shipping</span>
           <span className="text-muted-foreground">Calculated at checkout</span>
         </div>
         <div className="border-t border-border pt-3 flex justify-between">
           <span className="font-semibold">Total</span>
-          <span className="font-bold text-lg">${subtotal.toFixed(2)}</span>
+          <span className="font-bold text-lg">${total.toFixed(2)}</span>
         </div>
         <Button className="w-full" size="lg" onClick={() => setShowCheckout(true)} data-testid="button-checkout">
           <CreditCard className="w-4 h-4 mr-2" />
           Proceed to Checkout
         </Button>
-        <p className="text-xs text-muted-foreground text-center">
-          Yard Crew members: enter your discount code at checkout.
-        </p>
+        {isMember ? (
+          <p className="text-xs text-green-600 text-center font-medium">
+            🔩 Yard Crew discount applied!
+          </p>
+        ) : (
+          <p className="text-xs text-muted-foreground text-center">
+            Yard Crew members get 10% off every order.
+          </p>
+        )}
       </div>
 
       {/* Checkout placeholder modal */}
@@ -103,7 +127,9 @@ export default function Cart() {
               <h2 className="font-display text-lg font-bold">Checkout Coming Soon</h2>
             </div>
             <p className="text-sm text-muted-foreground">
-              Checkout powered by <strong>[Your Provider Here]</strong> is coming soon. This is where Stripe, Shopify, or Snipcart will be integrated.
+              {!SNIPCART_ENABLED
+                ? "Checkout powered by Snipcart — coming soon. We're setting up secure payments so you can order directly."
+                : "Checkout powered by Snipcart is ready to go."}
             </p>
 
             <div className="border-t border-border pt-4">

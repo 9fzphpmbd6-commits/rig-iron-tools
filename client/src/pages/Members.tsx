@@ -1,18 +1,25 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
+import { useYardCrew } from "@/lib/yardCrew";
 import { Users, Percent, Rocket, Award, Star, Check } from "lucide-react";
 
 export default function Members() {
   const { toast } = useToast();
+  const { isMember, memberInfo, joinYardCrew } = useYardCrew();
   const [submitted, setSubmitted] = useState(false);
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
 
   function handleSignUp(e: React.FormEvent) {
     e.preventDefault();
+    const name = nameRef.current?.value || "";
+    const email = emailRef.current?.value || "";
+    joinYardCrew(name, email);
     setSubmitted(true);
-    toast({ title: "Welcome to The Yard Crew", description: "We'll send your member code shortly." });
+    toast({ title: "Welcome to The Yard Crew! 🔩", description: "You now get 10% off everything." });
   }
 
   return (
@@ -83,54 +90,68 @@ export default function Members() {
 
       {/* Sign-up form */}
       <div className="bg-card border border-card-border rounded-xl p-6 sm:p-8 max-w-2xl mx-auto">
-        <h2 className="font-display text-lg font-bold mb-1">Sign Up for Free Membership</h2>
-        <p className="text-sm text-muted-foreground mb-6">Member discounts are applied via unique codes emailed to you.</p>
-
-        {submitted ? (
+        {isMember && memberInfo ? (
           <div className="text-center py-8 space-y-3">
             <div className="w-14 h-14 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto">
               <Check className="w-7 h-7 text-green-600 dark:text-green-400" />
             </div>
-            <p className="font-semibold">You're in.</p>
-            <p className="text-sm text-muted-foreground">Watch your inbox for your Yard Crew discount code.</p>
+            <p className="font-display text-lg font-bold">You're in The Yard Crew! 🔩</p>
+            <p className="text-sm text-muted-foreground">
+              Welcome, <strong>{memberInfo.name}</strong> ({memberInfo.email}). Your 10% discount is applied automatically.
+            </p>
           </div>
         ) : (
-          <form onSubmit={handleSignUp} className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium mb-1">Name</label>
-                <input required className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" data-testid="input-member-name" />
+          <>
+            <h2 className="font-display text-lg font-bold mb-1">Sign Up for Free Membership</h2>
+            <p className="text-sm text-muted-foreground mb-6">Join The Yard Crew for an instant 10% discount on all products.</p>
+
+            {submitted ? (
+              <div className="text-center py-8 space-y-3">
+                <div className="w-14 h-14 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto">
+                  <Check className="w-7 h-7 text-green-600 dark:text-green-400" />
+                </div>
+                <p className="font-semibold">You're in The Yard Crew! 🔩</p>
+                <p className="text-sm text-muted-foreground">Your 10% discount is now active on all products.</p>
               </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">Email</label>
-                <input type="email" required className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" data-testid="input-member-email" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">Company Name</label>
-                <input className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">Role</label>
-                <input placeholder="e.g. Foreman, Superintendent" className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" />
-              </div>
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">How many people on your crew?</label>
-              <input type="number" min="1" className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" />
-            </div>
-            <fieldset className="space-y-2">
-              <legend className="text-sm font-medium">What kind of work do you do?</legend>
-              {["I install structural steel", "I do plant maintenance", "I work on bridges/infrastructure", "I do metal fabrication"].map((opt) => (
-                <label key={opt} className="flex items-center gap-2 text-sm text-muted-foreground cursor-pointer">
-                  <input type="checkbox" className="rounded border-border" />
-                  {opt}
-                </label>
-              ))}
-            </fieldset>
-            <Button type="submit" size="lg" className="w-full" data-testid="button-member-signup">
-              Join The Yard Crew
-            </Button>
-          </form>
+            ) : (
+              <form onSubmit={handleSignUp} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Name</label>
+                    <input ref={nameRef} required className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" data-testid="input-member-name" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Email</label>
+                    <input ref={emailRef} type="email" required className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" data-testid="input-member-email" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Company Name</label>
+                    <input className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Role</label>
+                    <input placeholder="e.g. Foreman, Superintendent" className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">How many people on your crew?</label>
+                  <input type="number" min="1" className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" />
+                </div>
+                <fieldset className="space-y-2">
+                  <legend className="text-sm font-medium">What kind of work do you do?</legend>
+                  {["I install structural steel", "I do plant maintenance", "I work on bridges/infrastructure", "I do metal fabrication"].map((opt) => (
+                    <label key={opt} className="flex items-center gap-2 text-sm text-muted-foreground cursor-pointer">
+                      <input type="checkbox" className="rounded border-border" />
+                      {opt}
+                    </label>
+                  ))}
+                </fieldset>
+                <Button type="submit" size="lg" className="w-full" data-testid="button-member-signup">
+                  Join The Yard Crew 🔩
+                </Button>
+              </form>
+            )}
+          </>
         )}
       </div>
     </div>
