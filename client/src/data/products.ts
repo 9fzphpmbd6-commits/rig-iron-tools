@@ -960,7 +960,7 @@ export const products: Product[] = [
       "Application": "Hazardous / explosive environments",
     },
     price: 3661.92,
-    imageUrl: "/images/products/magdrill-airbor.png",
+    imageUrl: "/images/products/magdrill-airbor.jpg",
     idealFor: ["Refineries", "Chemical plants", "Offshore platforms", "ATEX environments"],
   },
   {
@@ -985,7 +985,7 @@ export const products: Product[] = [
       "Application": "Subsea / extreme industrial environments",
     },
     price: 4439.35,
-    imageUrl: "/images/products/magdrill-hydrabor.png",
+    imageUrl: "/images/products/magdrill-hydrabor.jpg",
     idealFor: ["Subsea work", "Underwater applications", "Extreme industrial", "Remote locations"],
   },
 
