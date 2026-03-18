@@ -1,5 +1,6 @@
 import { Link } from "wouter";
-import { ArrowRight, Zap, Magnet, Store, Truck, Play, Star } from "lucide-react";
+import { ArrowRight, Zap, Magnet, Store, Truck, Star } from "lucide-react";
+import { YouTubeEmbed } from "@/components/YouTubeEmbed";
 import { Button } from "@/components/ui/button";
 import { MembershipBanner } from "@/components/MembershipBanner";
 import { EmailCapture } from "@/components/EmailCapture";
@@ -204,22 +205,28 @@ export default function Home() {
       {/* Video reel spotlight */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <h2 className="font-display text-xl font-bold mb-2">See These Tools in Action</h2>
-        <p className="text-sm text-muted-foreground mb-6">Drop in your demo reels and product videos.</p>
+        <p className="text-sm text-muted-foreground mb-6">Real demos from the field — mag drills cutting steel and SITEH3RO reamers opening holes.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {[
-            "SITEH3RO Step Reamer Demo",
-            "Elite 50 Mag Drill Reel",
-            "SITEH3RO Ultimate Kit Unboxing",
-            "Commando 40 On-Site Test",
-          ].map((title) => (
-            <div key={title} className="relative aspect-video bg-secondary/10 rounded-lg border border-dashed border-border flex flex-col items-center justify-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <Play className="w-5 h-5 text-primary" />
-              </div>
-              <p className="text-sm font-medium">{title}</p>
-              <p className="text-xs text-muted-foreground">Drop in your video here</p>
-            </div>
-          ))}
+          <div className="space-y-2">
+            <YouTubeEmbed videoId="aw58Zifr1W0" title="SITEH3RO Impact-Ready Tools Overview" />
+            <p className="text-sm font-medium">SITEH3RO Impact-Ready Tools</p>
+            <p className="text-xs text-muted-foreground">See the full SITEH3RO range — step reamers, drills, and holders in action with impact wrenches.</p>
+          </div>
+          <div className="space-y-2">
+            <YouTubeEmbed videoId="Uo-M9d6jxfs" title="Unibor Element 50 Auto Magnetic Drill" />
+            <p className="text-sm font-medium">Element 50 Auto Mag Drill</p>
+            <p className="text-xs text-muted-foreground">The E5000 Auto with SmartGuard tech — automatic feed, reverse, and overload protection.</p>
+          </div>
+          <div className="space-y-2">
+            <YouTubeEmbed videoId="vS_uMvnalJY" title="Unibor Commando 40 Magnetic Drill" />
+            <p className="text-sm font-medium">Commando 40 Mag Drill</p>
+            <p className="text-xs text-muted-foreground">Compact and lightweight — the CMD400 punching clean holes on steel beams.</p>
+          </div>
+          <div className="space-y-2">
+            <YouTubeEmbed videoId="Lrr0SH-TsL8" title="Unibor EQ50 Magnetic Drill Demo" />
+            <p className="text-sm font-medium">EQ50 Mag Drill in Action</p>
+            <p className="text-xs text-muted-foreground">Full demo of the EQ50 — affordable, reliable, and built for everyday steel work.</p>
+          </div>
         </div>
       </section>
 
