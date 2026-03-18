@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { useYardCrew } from "@/lib/yardCrew";
-import { Users, Percent, Rocket, Award, Star, Check, Gift, ShieldCheck, ChevronRight } from "lucide-react";
+import { Users, Percent, Rocket, Award, Star, Check, Gift, ShieldCheck, ChevronRight, Truck, Wrench } from "lucide-react";
 
 export default function Members() {
   const { toast } = useToast();
@@ -153,13 +153,15 @@ export default function Members() {
           </div>
           <div className="flex items-center justify-between mb-3 pt-1">
             <h2 className="font-display text-lg font-bold">Yard Crew Lifetime</h2>
-            <Badge variant="outline" className="font-bold text-xs">$100 one-time</Badge>
+            <Badge variant="outline" className="font-bold text-xs">$25 one-time</Badge>
           </div>
-          <p className="text-sm text-muted-foreground mb-4">One payment. 15% off every order. Forever.</p>
+          <p className="text-sm text-muted-foreground mb-4">One payment. 15% off every order + FREE shipping. Forever.</p>
           <ul className="space-y-2 mb-5">
             {[
               { icon: Percent, text: "15% off EVERY order for life" },
+              { icon: Truck, text: "FREE shipping on every order" },
               { icon: Gift, text: "2 free SITEH3RO\u2122 Holders (1/2\" + 3/4\")" },
+              { icon: Wrench, text: "30% off holders when bundled with tools" },
               { icon: ShieldCheck, text: "Priority support" },
               { icon: Award, text: "Featured Builds listing" },
               { icon: Star, text: "Exclusive bundle deals" },
@@ -178,22 +180,22 @@ export default function Members() {
                 className="snipcart-add-item w-full bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8 text-sm font-semibold transition-colors"
                 data-item-id="yard-crew-lifetime"
                 data-item-name="Yard Crew Lifetime Membership"
-                data-item-price="100.00"
+                data-item-price="25.00"
                 data-item-url={`${origin}/#/members`}
-                data-item-description="One-time lifetime membership — 15% off every order + 2 free SITEH3RO holders"
+                data-item-description="One-time lifetime membership — 15% off every order + FREE shipping + 2 free SITEH3RO holders"
                 data-item-image="/images/mascot.png"
                 data-item-quantity="1"
                 data-item-max-quantity="1"
                 data-item-categories="membership"
                 data-testid="button-lifetime-purchase"
               >
-                Join The Yard Crew — $100 Lifetime 🔩
+                Join The Yard Crew — $25 Lifetime 🔩
               </button>
               <p className="text-xs text-muted-foreground text-center mt-2">Secure checkout via Snipcart + Stripe</p>
             </div>
           ) : (
             <div className="flex items-center justify-center gap-1.5 text-sm font-medium text-primary pt-2">
-              Click to join for $100 <ChevronRight className="w-4 h-4" />
+              Click to join for $25 <ChevronRight className="w-4 h-4" />
             </div>
           )}
         </div>
@@ -206,7 +208,7 @@ export default function Members() {
           { q: "How does the 15% discount work?", a: "After purchasing the Lifetime membership, you'll receive a discount code that applies 15% off every order automatically. It never expires." },
           { q: "What are the 2 free SITEH3RO Holders?", a: "Lifetime members get a free 1/2\" and 3/4\" SITEH3RO Impact-Ready Annular Cutter Holder shipped with their first tool order." },
           { q: "Can I upgrade from Free to Lifetime later?", a: "Yes, you can upgrade anytime. Just come back to this page and click the Lifetime box." },
-          { q: "Is the $100 fee recurring?", a: "No. It's a one-time payment. Your 15% discount and all perks last forever." },
+          { q: "Is the $25 fee recurring?", a: "No. It's a one-time payment. Your 15% discount, free shipping, and all perks last forever." },
         ].map((faq) => (
           <details key={faq.q} className="group bg-card border border-card-border rounded-lg">
             <summary className="px-4 py-3 text-sm font-medium cursor-pointer list-none flex items-center justify-between">

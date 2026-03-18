@@ -16,7 +16,7 @@ const FAQ_ANSWERS: Record<string, string> = {
   "Returns & warranty":
     "We offer 14-day free returns on all products — full refund, no questions asked, as long as the item is unused and in original packaging. Returns between 15–45 days get a 50% refund if the item is in resalable condition. Every Unibor product also comes with a manufacturer warranty.",
   "Yard Crew discount":
-    "Join The Yard Crew for $100 lifetime and get 15% off EVERY order — forever! You also get 2 free SITEH3RO holders, priority support, and exclusive deals. 🔩\n\n→ Sign up at #/members",
+    "Join The Yard Crew for just $25 lifetime and get 15% off EVERY order + FREE shipping — forever! You also get 2 free SITEH3RO holders, priority support, and exclusive deals. 🔩\n\n→ Sign up at #/members",
   "Which mag drill for me?":
     "Great question! Here's a quick guide:\n\n• Light/occasional work → CMD350 ($793.99) — 1200W, industry-leading 7\" stroke\n• General structural work → E4000 ($1,045.99) — DrillSmart, 2-speed gearbox\n• Tight spaces → E5000 LP ($1,725.99) — world's largest capacity low profile\n• Heavy-duty / auto drilling → E5000 Auto ($2,170.99) — fully automatic\n• Maximum capacity → E8000 ($2,822.99) — 4\" cutter, 2000W\n\nYard Crew members get 15% off these prices! What kind of work are you doing? 🔩",
   "Talk to a human":

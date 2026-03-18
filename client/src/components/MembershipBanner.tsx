@@ -12,7 +12,7 @@ export function MembershipBanner() {
         <div className="flex-1 text-secondary-foreground">
           <h2 className="font-display text-lg font-bold">Join The Yard Crew</h2>
           <p className="text-sm text-secondary-foreground/70 mt-1">
-            $100 one-time lifetime membership — 15% off every order, early access to new mag drills, and a chance to feature your crew's work.
+            $25 one-time lifetime membership — 15% off every order + FREE shipping, early access to new mag drills, and a chance to feature your crew's work.
           </p>
         </div>
         <Link href="/members">

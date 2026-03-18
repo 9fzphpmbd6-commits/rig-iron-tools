@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { href: "/products", label: "All Products" },
   { href: "/siteh3ro", label: "SITEH3RO" },
   { href: "/magnetic-drills", label: "Magnetic Drills" },
+  { href: "/accessories", label: "Accessories" },
   { href: "/featured-builds", label: "Featured Builds" },
   { href: "/about", label: "About" },
 ];
@@ -28,7 +29,7 @@ export function Header() {
     <>
       {/* Promo ribbon */}
       <div className="bg-secondary text-secondary-foreground text-center text-sm py-2 px-4">
-        🔩 <strong>Yard Crew Lifetime</strong> — $100 one-time, 15% off every order forever.{" "}
+        🔩 <strong>Yard Crew Lifetime</strong> — $25 one-time, 15% off every order + FREE shipping forever.{" "}
         <Link href="/members" className="underline font-semibold hover:text-primary">
           Join now
         </Link>

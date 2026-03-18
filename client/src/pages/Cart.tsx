@@ -56,7 +56,7 @@ export default function Cart() {
         <div className="mt-8 max-w-sm mx-auto">
           <Link href="/members">
             <div className="bg-primary/5 border border-primary/20 rounded-lg px-4 py-3 hover:bg-primary/10 transition-colors text-sm text-primary font-medium">
-              🔩 Not a Yard Crew member? Join now and save 15% on every order.
+              🔩 Not a Yard Crew member? Join for $25 and get 15% off + FREE shipping on every order.
             </div>
           </Link>
         </div>

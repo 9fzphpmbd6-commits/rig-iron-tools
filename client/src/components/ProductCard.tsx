@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ShoppingCart, Star, Zap, Gift } from "lucide-react";
+import { ShoppingCart, Star, Zap, Gift, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useYardCrew } from "@/lib/yardCrew";
@@ -9,14 +9,21 @@ import type { Product } from "@/data/products";
 export function ProductCard({ product }: { product: Product }) {
   const { isMember, getDiscountedPrice } = useYardCrew();
 
+  const hasVariants = product.variants && product.variants.length > 0;
+
   const displayPrice = isMember && product.subcategory !== "holder"
     ? getDiscountedPrice(product.price)
     : product.price;
 
-  const snipcartProps = getSnipcartAttributes({
-    ...product,
-    price: displayPrice,
-  });
+  const snipcartProps = !hasVariants
+    ? getSnipcartAttributes({ ...product, price: displayPrice })
+    : {};
+
+  const categoryDisplay = product.category === "siteh3ro"
+    ? "SITEH3RO"
+    : product.category === "magnetic-drill"
+      ? "Magnetic Drill"
+      : "Accessory";
 
   return (
     <div className="group bg-card border border-card-border rounded-lg overflow-hidden hover:shadow-md transition-shadow" data-testid={`card-product-${product.id}`}>
@@ -59,7 +66,7 @@ export function ProductCard({ product }: { product: Product }) {
 
       <div className="p-4 space-y-2">
         <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">
-          {product.category === "siteh3ro" ? "SITEH3RO" : "Magnetic Drill"}
+          {categoryDisplay}
           {product.subcategory && ` · ${product.subcategory.replace(/-/g, " ")}`}
         </p>
 
@@ -80,7 +87,9 @@ export function ProductCard({ product }: { product: Product }) {
 
         <div className="flex items-end justify-between pt-2">
           <div>
-            {isMember && product.subcategory !== "holder" ? (
+            {hasVariants ? (
+              <span className="text-lg font-bold">From ${product.price.toFixed(2)}</span>
+            ) : isMember && product.subcategory !== "holder" ? (
               <>
                 <span className="text-lg font-bold text-green-600">${displayPrice.toFixed(2)}</span>
                 <span className="ml-2 text-sm text-muted-foreground line-through">
@@ -91,15 +100,24 @@ export function ProductCard({ product }: { product: Product }) {
               <span className="text-lg font-bold">${product.price.toFixed(2)}</span>
             )}
           </div>
-          <Button
-            size="sm"
-            className="gap-1.5"
-            data-testid={`button-add-to-cart-${product.id}`}
-            {...snipcartProps}
-          >
-            <ShoppingCart className="w-3.5 h-3.5" />
-            Add
-          </Button>
+          {hasVariants ? (
+            <Link href={`/products/${product.slug}`}>
+              <Button size="sm" variant="outline" className="gap-1.5">
+                <Eye className="w-3.5 h-3.5" />
+                View Options
+              </Button>
+            </Link>
+          ) : (
+            <Button
+              size="sm"
+              className="gap-1.5"
+              data-testid={`button-add-to-cart-${product.id}`}
+              {...snipcartProps}
+            >
+              <ShoppingCart className="w-3.5 h-3.5" />
+              Add
+            </Button>
+          )}
         </div>
 
         <Link href={`/products/${product.slug}`}>

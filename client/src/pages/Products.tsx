@@ -13,13 +13,24 @@ const SUBCATEGORY_LABELS: Record<string, string> = {
   "car-reamer": "Car Reamers",
   "tap": "Taps",
   "kit": "Kits",
+  "holder": "Holders",
   "elite-magnetic-drill": "Elite Series",
   "pro-magnetic-drill": "Professional Series",
   "budget-magnetic-drill": "Commando Series",
+  "drill-tap-combo": "Drill/Tap Combos",
+  "unibor-tap": "Unibor Taps",
+  "combi-drill-tap-kit": "Combi Drill/Tap Kits",
+  "countersink": "Countersinks",
+  "arbor": "Arbors",
+  "chuck": "Chucks",
+  "extension": "Extensions",
+  "adaptor": "Adaptors",
+  "cutting-fluid": "Cutting Fluid",
+  "drill-tap-set": "Drill/Tap Sets",
 };
 
-export default function Products() {
-  const [categoryFilter, setCategoryFilter] = useState<Category | "all">("all");
+export default function Products({ initialCategory }: { initialCategory?: Category }) {
+  const [categoryFilter, setCategoryFilter] = useState<Category | "all">(initialCategory || "all");
   const [subcategoryFilter, setSubcategoryFilter] = useState<Subcategory | "all">("all");
   const [sort, setSort] = useState<SortOption>("featured");
   const [showFilters, setShowFilters] = useState(false);
@@ -45,13 +56,17 @@ export default function Products() {
 
   const hasFilters = categoryFilter !== "all" || subcategoryFilter !== "all";
 
+  const pageTitle = initialCategory === "accessory"
+    ? "Accessories"
+    : "All Products";
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
-      <Breadcrumbs items={[{ label: "All Products" }]} />
+      <Breadcrumbs items={[{ label: pageTitle }]} />
 
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
         <div>
-          <h1 className="font-display text-xl font-bold">All Products</h1>
+          <h1 className="font-display text-xl font-bold">{pageTitle}</h1>
           <p className="text-sm text-muted-foreground mt-1">{filtered.length} tools available</p>
         </div>
         <div className="flex items-center gap-2">
@@ -88,6 +103,7 @@ export default function Products() {
                 { val: "all" as const, label: "All" },
                 { val: "siteh3ro" as const, label: "SITEH3RO" },
                 { val: "magnetic-drill" as const, label: "Magnetic Drills" },
+                { val: "accessory" as const, label: "Accessories" },
               ].map((opt) => (
                 <button
                   key={opt.val}
@@ -133,7 +149,7 @@ export default function Products() {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => { setCategoryFilter("all"); setSubcategoryFilter("all"); }}
+              onClick={() => { setCategoryFilter(initialCategory || "all"); setSubcategoryFilter("all"); }}
               className="gap-1 text-destructive"
             >
               <X className="w-3.5 h-3.5" /> Clear filters

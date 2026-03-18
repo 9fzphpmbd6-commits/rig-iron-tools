@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useRoute } from "wouter";
-import { ShoppingCart, Minus, Plus, Star, Zap, ArrowRight, Hash, Gift } from "lucide-react";
+import { ShoppingCart, Minus, Plus, Star, Zap, ArrowRight, Hash, Gift, AlertTriangle, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -8,7 +8,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { YouTubeEmbed } from "@/components/YouTubeEmbed";
 import { ShippingInfo } from "@/components/ShippingInfo";
 import { ProductCard } from "@/components/ProductCard";
-import { getProductBySlug } from "@/data/products";
+import { getProductBySlug, getProductsByCategory } from "@/data/products";
 import { useRecommendations } from "@/lib/recommendations";
 import { useYardCrew } from "@/lib/yardCrew";
 import { getSnipcartAttributes } from "@/lib/snipcart";
@@ -19,7 +19,15 @@ export default function ProductDetail() {
   const slug = params?.slug || "";
   const product = getProductBySlug(slug);
   const [qty, setQty] = useState(1);
+  const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
   const { isMember, getDiscountedPrice } = useYardCrew();
+
+  // Scroll to top when navigating to a new product
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setQty(1);
+    setSelectedVariantIdx(0);
+  }, [slug]);
 
   if (!product) {
     return (
@@ -31,18 +39,44 @@ export default function ProductDetail() {
     );
   }
 
-  const related = useRecommendations(product, 3);
-  const categoryLabel = product.category === "siteh3ro" ? "SITEH3RO" : "Magnetic Drills";
-  const categoryHref = product.category === "siteh3ro" ? "/siteh3ro" : "/magnetic-drills";
+  const hasVariants = product.variants && product.variants.length > 0;
+  const selectedVariant = hasVariants ? product.variants![selectedVariantIdx] : undefined;
 
+  const basePrice = selectedVariant ? selectedVariant.price : product.price;
   const displayPrice = isMember && product.subcategory !== "holder"
-    ? getDiscountedPrice(product.price)
-    : product.price;
+    ? getDiscountedPrice(basePrice)
+    : basePrice;
+
+  const displaySku = selectedVariant ? selectedVariant.sku : product.sku;
 
   const snipcartProps = getSnipcartAttributes(
     { ...product, price: displayPrice },
     qty,
+    selectedVariant ? { ...selectedVariant, price: displayPrice } : undefined,
   );
+
+  const related = useRecommendations(product, 3);
+
+  const categoryLabel = product.category === "siteh3ro"
+    ? "SITEH3RO"
+    : product.category === "magnetic-drill"
+      ? "Magnetic Drills"
+      : "Accessories";
+  const categoryHref = product.category === "siteh3ro"
+    ? "/siteh3ro"
+    : product.category === "magnetic-drill"
+      ? "/magnetic-drills"
+      : "/accessories";
+
+  // Holder reminder: show on SITEH3RO products that aren't holders
+  const showHolderReminder = product.category === "siteh3ro" && product.subcategory !== "holder";
+
+  // Find the cheapest holder for the "add holder" CTA
+  const holders = getProductsByCategory("siteh3ro").filter((p) => p.subcategory === "holder");
+  const cheapestHolder = holders.length > 0
+    ? holders.reduce((a, b) => (a.price < b.price ? a : b))
+    : null;
+  const holderDiscountedPrice = cheapestHolder ? +(cheapestHolder.price * 0.70).toFixed(2) : 0;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
@@ -85,11 +119,37 @@ export default function ProductDetail() {
 
           <h1 className="font-display text-xl sm:text-2xl font-bold leading-tight">{product.name}</h1>
 
+          {/* SKU */}
+          <p className="text-xs text-muted-foreground font-mono tracking-wide">SKU: {displaySku}</p>
+
           <p className="text-sm text-muted-foreground uppercase tracking-wide font-medium">
             {categoryLabel}
             {product.subcategory && ` · ${product.subcategory.replace(/-/g, " ")}`}
           </p>
 
+          {/* Variant selector */}
+          {hasVariants && (
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Select Size</p>
+              <div className="flex flex-wrap gap-1.5">
+                {product.variants!.map((v, i) => (
+                  <button
+                    key={v.sku}
+                    onClick={() => setSelectedVariantIdx(i)}
+                    className={`px-3 py-1.5 text-sm rounded-md border transition-colors ${
+                      i === selectedVariantIdx
+                        ? "bg-primary text-primary-foreground border-primary font-semibold"
+                        : "bg-card border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
+                    }`}
+                  >
+                    {v.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Price */}
           <div className="flex items-baseline gap-3">
             {isMember && product.subcategory !== "holder" ? (
               <>
@@ -97,12 +157,12 @@ export default function ProductDetail() {
                   ${displayPrice.toFixed(2)}
                 </span>
                 <span className="text-base text-muted-foreground line-through">
-                  ${product.price.toFixed(2)}
+                  ${basePrice.toFixed(2)}
                 </span>
               </>
             ) : (
               <>
-                <span className="text-2xl font-bold">${product.price.toFixed(2)}</span>
+                <span className="text-2xl font-bold">${basePrice.toFixed(2)}</span>
                 {product.compareAtPrice && (
                   <span className="text-base text-muted-foreground line-through">
                     ${product.compareAtPrice.toFixed(2)}
@@ -112,40 +172,59 @@ export default function ProductDetail() {
             )}
           </div>
 
-          {/* Yard Crew promo */}
-          {product.subcategory === "holder" ? (
-            isMember ? (
-              <div className="bg-green-50 border border-green-200 rounded-lg px-4 py-3 flex items-center gap-3">
-                <Gift className="w-5 h-5 text-green-600 shrink-0" />
-                <div>
-                  <p className="text-sm font-bold text-green-700">FREE with Yard Crew Membership</p>
-                  <p className="text-xs text-green-600">This holder is included free as a Yard Crew member when you purchase any SITEH3RO cutting tool.</p>
-                </div>
-              </div>
-            ) : (
-              <Link href="/members" className="block">
-                <div className="bg-primary/5 border border-primary/20 rounded-lg px-4 py-3 hover:bg-primary/10 transition-colors">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Gift className="w-4 h-4 text-primary" />
-                    <span className="text-sm font-bold text-primary">🔩 Get This Holder FREE</span>
-                  </div>
-                  <p className="text-xs text-primary/70">Join The Yard Crew and get a free SITEH3RO Holder when you buy any SITEH3RO cutting tool — plus 15% off everything.</p>
-                </div>
-              </Link>
-            )
-          ) : isMember ? (
-            <p className="text-sm font-medium text-green-600">
-              🔩 Yard Crew Price — You're saving 15%!
-            </p>
+          {/* Yard Crew $25 promo — show on EVERY product page */}
+          {isMember ? (
+            <div className="flex items-center gap-2 text-sm font-medium text-green-600">
+              <Truck className="w-4 h-4" />
+              🔩 Yard Crew Member — You're saving 15% + FREE Shipping!
+            </div>
           ) : (
             <Link href="/members" className="block">
-              <div className="bg-primary/5 border border-primary/20 rounded-lg px-3 py-2 text-sm text-primary font-medium hover:bg-primary/10 transition-colors">
-                🔩 Join The Yard Crew for 15% Off
+              <div className="bg-[#0F2439] text-white rounded-lg px-4 py-3 hover:bg-[#0F2439]/90 transition-colors">
+                <p className="text-sm font-bold">
+                  🔩 Join The Yard Crew — $25 One-Time | 15% Off Every Order + FREE Shipping 🚚
+                </p>
+                <p className="text-xs text-white/70 mt-1">One payment, lifetime perks. Click to learn more.</p>
               </div>
             </Link>
           )}
 
           <p className="text-sm text-muted-foreground leading-relaxed">{product.shortDescription}</p>
+
+          {/* Holder reminder for SITEH3RO non-holder products */}
+          {showHolderReminder && (
+            <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded-lg px-4 py-3 space-y-2">
+              <div className="flex items-start gap-2">
+                <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                <p className="text-sm font-medium text-amber-800 dark:text-amber-200">Most SITEH3RO™ tools require a holder.</p>
+              </div>
+              <ul className="text-xs text-amber-700 dark:text-amber-300 space-y-1.5 pl-6">
+                <li>
+                  <Link href="/members" className="underline font-medium hover:text-primary">Join Yard Crew ($25)</Link> → get 2 FREE holders + 15% off everything
+                </li>
+                {cheapestHolder && (
+                  <li>
+                    Or{" "}
+                    <button
+                      className="snipcart-add-item underline font-medium hover:text-primary"
+                      data-item-id={`${cheapestHolder.sku}-BUNDLE`}
+                      data-item-name={`${cheapestHolder.name} (30% off with tool)`}
+                      data-item-price={holderDiscountedPrice.toFixed(2)}
+                      data-item-url={`${typeof window !== "undefined" ? window.location.origin : ""}/#/products/${cheapestHolder.slug}`}
+                      data-item-description={cheapestHolder.shortDescription}
+                      data-item-image={cheapestHolder.imageUrl}
+                      data-item-quantity="1"
+                    >
+                      Add {cheapestHolder.name} to cart — ${holderDiscountedPrice.toFixed(2)}
+                    </button>
+                    {" "}
+                    <span className="line-through text-amber-600/60">${cheapestHolder.price.toFixed(2)}</span>
+                    {" "}(30% off)
+                  </li>
+                )}
+              </ul>
+            </div>
+          )}
 
           {/* Quantity + Add to Cart */}
           <div className="flex items-center gap-3 pt-2">
@@ -160,7 +239,7 @@ export default function ProductDetail() {
             </div>
             <Button
               size="lg"
-              className="gap-2 flex-1 sm:flex-none"
+              className="gap-2 flex-1 sm:flex-none snipcart-add-item"
               data-testid="button-add-to-cart"
               {...snipcartProps}
             >
@@ -169,7 +248,7 @@ export default function ProductDetail() {
             </Button>
           </div>
 
-          <ShippingInfo />
+          <ShippingInfo isYardCrew={isMember} />
 
           {/* Compare link */}
           <Link href={categoryHref} className="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">

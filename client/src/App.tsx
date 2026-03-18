@@ -29,10 +29,11 @@ function AppRouter() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/products" component={Products} />
+      <Route path="/products">{() => <Products />}</Route>
       <Route path="/products/:slug" component={ProductDetail} />
       <Route path="/siteh3ro" component={SiteH3RO} />
       <Route path="/magnetic-drills" component={MagneticDrills} />
+      <Route path="/accessories">{() => <Products initialCategory="accessory" />}</Route>
       <Route path="/members" component={Members} />
       <Route path="/featured-builds" component={FeaturedBuilds} />
       <Route path="/about" component={About} />

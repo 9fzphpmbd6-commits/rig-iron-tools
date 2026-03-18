@@ -1,12 +1,16 @@
 import { Truck, ShieldCheck, Clock } from "lucide-react";
 import { SITE } from "@/data/siteConfig";
 
-export function ShippingInfo({ compact = false }: { compact?: boolean }) {
+export function ShippingInfo({ compact = false, isYardCrew = false }: { compact?: boolean; isYardCrew?: boolean }) {
   if (compact) {
     return (
       <div className="flex items-center gap-2 text-xs text-muted-foreground">
         <Truck className="w-3.5 h-3.5" />
-        <span>{SITE.shipping.estimate}. {SITE.shipping.note}</span>
+        {isYardCrew ? (
+          <span className="text-green-600 font-semibold">FREE Shipping 🚚 — Yard Crew Perk</span>
+        ) : (
+          <span>{SITE.shipping.estimate}. {SITE.shipping.note}</span>
+        )}
       </div>
     );
   }
@@ -16,8 +20,17 @@ export function ShippingInfo({ compact = false }: { compact?: boolean }) {
       <div className="flex items-start gap-2.5">
         <Truck className="w-5 h-5 text-primary shrink-0 mt-0.5" />
         <div>
-          <p className="text-sm font-medium">{SITE.shipping.estimate}</p>
-          <p className="text-xs text-muted-foreground">{SITE.shipping.note}</p>
+          {isYardCrew ? (
+            <>
+              <p className="text-sm font-bold text-green-600">FREE Shipping 🚚</p>
+              <p className="text-xs text-green-600/70">Yard Crew members ship free on every order</p>
+            </>
+          ) : (
+            <>
+              <p className="text-sm font-medium">{SITE.shipping.estimate}</p>
+              <p className="text-xs text-muted-foreground">{SITE.shipping.note}</p>
+            </>
+          )}
         </div>
       </div>
       <div className="flex items-start gap-2.5">
@@ -31,9 +44,18 @@ export function ShippingInfo({ compact = false }: { compact?: boolean }) {
         <Clock className="w-5 h-5 text-primary shrink-0 mt-0.5" />
         <div>
           <p className="text-sm font-medium">Easy Returns</p>
-          <p className="text-xs text-muted-foreground">30-day return policy</p>
+          <p className="text-xs text-muted-foreground">14-day free return policy</p>
         </div>
       </div>
+      {!isYardCrew && (
+        <div className="flex items-start gap-2.5">
+          <span className="text-lg shrink-0 mt-0.5">🔩</span>
+          <div>
+            <p className="text-sm font-medium text-primary">Yard Crew = Free Shipping</p>
+            <p className="text-xs text-muted-foreground">Join for $25 and ship free for life</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
