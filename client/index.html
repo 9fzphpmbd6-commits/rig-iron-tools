@@ -34,6 +34,59 @@
     <link rel="canonical" href="https://texasholemakers.com" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@700,800&display=swap" rel="stylesheet">
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'YOUR_PIXEL_ID_HERE');
+      fbq('track', 'PageView');
+    </script>
+
+    <!-- Meta Pixel + Snipcart E-Commerce Events -->
+    <script>
+      document.addEventListener('snipcart.ready', function() {
+        // Track AddToCart
+        Snipcart.events.on('item.added', function(cartItem) {
+          if (typeof fbq !== 'undefined') {
+            fbq('track', 'AddToCart', {
+              content_name: cartItem.name,
+              content_ids: [cartItem.id],
+              content_type: 'product',
+              value: cartItem.price,
+              currency: 'USD'
+            });
+          }
+        });
+        // Track InitiateCheckout
+        Snipcart.events.on('cart.confirmed', function(cartConfirmation) {
+          if (typeof fbq !== 'undefined') {
+            fbq('track', 'InitiateCheckout', {
+              value: cartConfirmation.total,
+              currency: 'USD',
+              num_items: cartConfirmation.items.count
+            });
+          }
+        });
+        // Track Purchase
+        Snipcart.events.on('order.completed', function(order) {
+          if (typeof fbq !== 'undefined') {
+            fbq('track', 'Purchase', {
+              value: order.total,
+              currency: 'USD',
+              content_ids: order.items.items.map(function(i) { return i.id; }),
+              content_type: 'product'
+            });
+          }
+        });
+      });
+    </script>
+    <!-- End Meta Pixel Code -->
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XBF0RTXVVP"></script>
     <script>
@@ -44,6 +97,10 @@
     </script>
   </head>
   <body>
+    <noscript>
+      <img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"/>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
 
