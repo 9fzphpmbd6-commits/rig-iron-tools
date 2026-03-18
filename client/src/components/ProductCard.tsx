@@ -88,16 +88,30 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="flex items-end justify-between pt-2">
           <div>
             {hasVariants ? (
-              <span className="text-lg font-bold">From ${product.price.toFixed(2)}</span>
+              <div className="flex items-baseline gap-2">
+                <span className="text-lg font-bold">From ${product.price.toFixed(2)}</span>
+                {product.compareAtPrice && (
+                  <span className="text-sm text-muted-foreground line-through">
+                    ${product.compareAtPrice.toFixed(2)}
+                  </span>
+                )}
+              </div>
             ) : isMember && product.subcategory !== "holder" ? (
-              <>
+              <div className="flex items-baseline gap-2">
                 <span className="text-lg font-bold text-green-600">${displayPrice.toFixed(2)}</span>
-                <span className="ml-2 text-sm text-muted-foreground line-through">
-                  ${product.price.toFixed(2)}
+                <span className="text-sm text-muted-foreground line-through">
+                  ${(product.compareAtPrice || product.price).toFixed(2)}
                 </span>
-              </>
+              </div>
             ) : (
-              <span className="text-lg font-bold">${product.price.toFixed(2)}</span>
+              <div className="flex items-baseline gap-2">
+                <span className="text-lg font-bold">${product.price.toFixed(2)}</span>
+                {product.compareAtPrice && product.compareAtPrice > product.price && (
+                  <span className="text-sm text-muted-foreground line-through">
+                    ${product.compareAtPrice.toFixed(2)}
+                  </span>
+                )}
+              </div>
             )}
           </div>
           {hasVariants ? (

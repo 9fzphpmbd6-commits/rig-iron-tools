@@ -157,7 +157,7 @@ export default function ProductDetail() {
                   ${displayPrice.toFixed(2)}
                 </span>
                 <span className="text-base text-muted-foreground line-through">
-                  ${basePrice.toFixed(2)}
+                  ${(product.compareAtPrice && !hasVariants ? product.compareAtPrice : basePrice).toFixed(2)}
                 </span>
               </>
             ) : (
@@ -165,7 +165,10 @@ export default function ProductDetail() {
                 <span className="text-2xl font-bold">${basePrice.toFixed(2)}</span>
                 {product.compareAtPrice && (
                   <span className="text-base text-muted-foreground line-through">
-                    ${product.compareAtPrice.toFixed(2)}
+                    ${(hasVariants
+                      ? Math.round(basePrice * (product.compareAtPrice / product.price))
+                      : product.compareAtPrice
+                    ).toFixed(2)}
                   </span>
                 )}
               </>
