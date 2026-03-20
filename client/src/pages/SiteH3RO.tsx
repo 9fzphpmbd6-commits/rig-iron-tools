@@ -30,7 +30,7 @@ export default function SiteH3RO() {
             <strong>Connect. Click. GO.</strong>
           </p>
           <div className="flex flex-wrap gap-4">
-            <a href="#products" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded font-display font-bold text-sm uppercase tracking-wider hover:opacity-90 transition">
+            <a role="button" onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })} className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded font-display font-bold text-sm uppercase tracking-wider hover:opacity-90 transition">
               Shop the Range
             </a>
           </div>
