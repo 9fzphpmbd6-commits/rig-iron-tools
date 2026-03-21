@@ -653,7 +653,7 @@ export const products: Product[] = [
       "Coating": "SITEH3RO™ on all tools",
     },
     price: 775.00,
-    compareAtPrice: 1295.00,
+    compareAtPrice: 780.00,
     imageUrl: "/images/products/siteh3ro-ultimate-kit.png",
     videoPlaceholderUrl: "/videos/siteh3ro-ultimate-kit-demo.mp4",
     youtubeVideoId: "aw58Zifr1W0",
