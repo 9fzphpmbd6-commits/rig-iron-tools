@@ -17,16 +17,9 @@ const SUBCATEGORY_LABELS: Record<string, string> = {
   "elite-magnetic-drill": "Elite Series",
   "pro-magnetic-drill": "Professional Series",
   "budget-magnetic-drill": "Commando Series",
-  "drill-tap-combo": "Drill/Tap Combos",
-  "unibor-tap": "Unibor Taps",
-  "combi-drill-tap-kit": "Combi Drill/Tap Kits",
-  "countersink": "Countersinks",
-  "arbor": "Arbors",
-  "chuck": "Chucks",
-  "extension": "Extensions",
-  "adaptor": "Adaptors",
-  "cutting-fluid": "Cutting Fluid",
-  "drill-tap-set": "Drill/Tap Sets",
+  "hss": "HSS",
+  "cobalt": "Cobalt",
+  "tct": "TCT (Carbide)",
 };
 
 export default function Products({ initialCategory }: { initialCategory?: Category }) {
@@ -56,8 +49,12 @@ export default function Products({ initialCategory }: { initialCategory?: Catego
 
   const hasFilters = categoryFilter !== "all" || subcategoryFilter !== "all";
 
-  const pageTitle = initialCategory === "accessory"
-    ? "Accessories"
+  const pageTitle = initialCategory === "cutter"
+    ? "Annular Cutters"
+    : initialCategory === "siteh3ro"
+    ? "SITEH3RO Tools"
+    : initialCategory === "magnetic-drill"
+    ? "Magnetic Drills"
     : "All Products";
 
   return (
@@ -103,7 +100,7 @@ export default function Products({ initialCategory }: { initialCategory?: Catego
                 { val: "all" as const, label: "All" },
                 { val: "siteh3ro" as const, label: "SITEH3RO" },
                 { val: "magnetic-drill" as const, label: "Magnetic Drills" },
-                { val: "accessory" as const, label: "Accessories" },
+                { val: "cutter" as const, label: "Cutters" },
               ].map((opt) => (
                 <button
                   key={opt.val}

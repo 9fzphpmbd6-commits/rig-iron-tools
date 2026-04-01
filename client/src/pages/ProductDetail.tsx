@@ -61,12 +61,16 @@ export default function ProductDetail() {
     ? "SITEH3RO"
     : product.category === "magnetic-drill"
       ? "Magnetic Drills"
-      : "Accessories";
+      : product.category === "cutter"
+      ? "Cutters"
+      : "Products";
   const categoryHref = product.category === "siteh3ro"
     ? "/siteh3ro"
     : product.category === "magnetic-drill"
       ? "/magnetic-drills"
-      : "/accessories";
+      : product.category === "cutter"
+      ? "/cutters"
+      : "/products";
 
   // Holder reminder: show on SITEH3RO products that aren't holders
   const showHolderReminder = product.category === "siteh3ro" && product.subcategory !== "holder";

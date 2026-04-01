@@ -8,7 +8,7 @@ const NAV_LINKS = [
   { href: "/products", label: "All Products" },
   { href: "/siteh3ro", label: "SITEH3RO" },
   { href: "/magnetic-drills", label: "Magnetic Drills" },
-  { href: "/accessories", label: "Accessories" },
+  { href: "/cutters", label: "Cutters" },
   { href: "/featured-builds", label: "Featured Builds" },
   { href: "/about", label: "About" },
 ];

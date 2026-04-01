@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, Zap, Magnet, Store, Truck, Star } from "lucide-react";
+import { ArrowRight, Zap, Magnet, Store, Truck, Star, Circle } from "lucide-react";
 import { YouTubeEmbed } from "@/components/YouTubeEmbed";
 import { Button } from "@/components/ui/button";
 import { MembershipBanner } from "@/components/MembershipBanner";
@@ -103,62 +103,71 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Quick category tiles */}
+      {/* Category navigation boxes */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* SITEH3RO tile */}
-          <div className="bg-card border border-card-border rounded-xl p-6 sm:p-8 space-y-4">
-            <div className="flex items-center gap-2">
-              <Zap className="w-5 h-5 text-primary" />
-              <h2 className="font-display text-lg font-bold">SITEH3RO Impact-Ready Tools</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+          {/* Mag Drills */}
+          <Link href="/magnetic-drills">
+            <div
+              className="group relative overflow-hidden rounded-2xl p-7 sm:p-8 flex flex-col gap-4 cursor-pointer transition-transform hover:-translate-y-1 hover:shadow-xl"
+              style={{ background: "#0F2439" }}
+            >
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-white/10">
+                  <Magnet className="w-6 h-6 text-white" />
+                </span>
+                <h2 className="font-display text-xl font-extrabold text-white tracking-tight">Mag Drills</h2>
+              </div>
+              <p className="text-sm text-white/70 leading-relaxed">
+                Portable magnetic drilling machines — Elite, Pro &amp; Commando ranges.
+              </p>
+              <span className="inline-flex items-center gap-1 text-sm font-semibold text-white/90 group-hover:gap-2 transition-all">
+                Shop now <ArrowRight className="w-4 h-4" />
+              </span>
             </div>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li className="flex items-start gap-2">
-                <span className="w-1 h-1 bg-primary rounded-full mt-2 shrink-0" />
-                Up to 75% longer tool life with proprietary coating
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="w-1 h-1 bg-primary rounded-full mt-2 shrink-0" />
-                Hex-shank for impact wrenches — no adapters
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="w-1 h-1 bg-primary rounded-full mt-2 shrink-0" />
-                Step reamers, step drills, car reamers, taps, and kits
-              </li>
-            </ul>
-            <Link href="/siteh3ro">
-              <Button variant="outline" className="gap-1.5">
-                Browse SITEH3RO <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
-          </div>
+          </Link>
 
-          {/* Magnetic Drills tile */}
-          <div className="bg-card border border-card-border rounded-xl p-6 sm:p-8 space-y-4">
-            <div className="flex items-center gap-2">
-              <Magnet className="w-5 h-5 text-primary" />
-              <h2 className="font-display text-lg font-bold">Magnetic Drills</h2>
+          {/* SITEH3RO */}
+          <Link href="/siteh3ro">
+            <div
+              className="group relative overflow-hidden rounded-2xl p-7 sm:p-8 flex flex-col gap-4 cursor-pointer transition-transform hover:-translate-y-1 hover:shadow-xl"
+              style={{ background: "#C4550A" }}
+            >
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-white/10">
+                  <Zap className="w-6 h-6 text-white" />
+                </span>
+                <h2 className="font-display text-xl font-extrabold text-white tracking-tight">SITEH3RO</h2>
+              </div>
+              <p className="text-sm text-white/70 leading-relaxed">
+                Impact-ready reamers, taps &amp; kits — 75% longer tool life.
+              </p>
+              <span className="inline-flex items-center gap-1 text-sm font-semibold text-white/90 group-hover:gap-2 transition-all">
+                Shop now <ArrowRight className="w-4 h-4" />
+              </span>
             </div>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li className="flex items-start gap-2">
-                <span className="w-1 h-1 bg-primary rounded-full mt-2 shrink-0" />
-                Sheffield-designed Elite, Professional, and Commando ranges
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="w-1 h-1 bg-primary rounded-full mt-2 shrink-0" />
-                Smart Controls, DrillSmart, and LiftShield technology
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="w-1 h-1 bg-primary rounded-full mt-2 shrink-0" />
-                From budget-friendly to heavy-duty 75mm capacity
-              </li>
-            </ul>
-            <Link href="/magnetic-drills">
-              <Button variant="outline" className="gap-1.5">
-                Browse Mag Drills <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
-          </div>
+          </Link>
+
+          {/* Cutters */}
+          <Link href="/cutters">
+            <div
+              className="group relative overflow-hidden rounded-2xl p-7 sm:p-8 flex flex-col gap-4 cursor-pointer transition-transform hover:-translate-y-1 hover:shadow-xl"
+              style={{ background: "#4A5568" }}
+            >
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-white/10">
+                  <Circle className="w-6 h-6 text-white" />
+                </span>
+                <h2 className="font-display text-xl font-extrabold text-white tracking-tight">Cutters</h2>
+              </div>
+              <p className="text-sm text-white/70 leading-relaxed">
+                HSS, Cobalt &amp; TCT Carbide annular cutters — lowest prices online.
+              </p>
+              <span className="inline-flex items-center gap-1 text-sm font-semibold text-white/90 group-hover:gap-2 transition-all">
+                Shop now <ArrowRight className="w-4 h-4" />
+              </span>
+            </div>
+          </Link>
         </div>
       </section>
 

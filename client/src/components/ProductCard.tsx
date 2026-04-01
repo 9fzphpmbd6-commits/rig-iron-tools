@@ -23,7 +23,9 @@ export function ProductCard({ product }: { product: Product }) {
     ? "SITEH3RO"
     : product.category === "magnetic-drill"
       ? "Magnetic Drill"
-      : "Accessory";
+      : product.category === "cutter"
+        ? "Annular Cutter"
+        : "Accessory";
 
   return (
     <div className="group bg-card border border-card-border rounded-lg overflow-hidden hover:shadow-md transition-shadow" data-testid={`card-product-${product.id}`}>

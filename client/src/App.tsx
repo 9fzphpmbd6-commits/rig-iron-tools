@@ -33,7 +33,8 @@ function AppRouter() {
       <Route path="/products/:slug" component={ProductDetail} />
       <Route path="/siteh3ro" component={SiteH3RO} />
       <Route path="/magnetic-drills" component={MagneticDrills} />
-      <Route path="/accessories">{() => <Products initialCategory="accessory" />}</Route>
+      <Route path="/accessories">{() => <Products initialCategory="cutter" />}</Route>
+      <Route path="/cutters">{() => <Products initialCategory="cutter" />}</Route>
       <Route path="/members" component={Members} />
       <Route path="/featured-builds" component={FeaturedBuilds} />
       <Route path="/about" component={About} />
